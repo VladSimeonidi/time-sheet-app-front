@@ -1,0 +1,55 @@
+<div class="grid">
+    <div class="col-12">
+        <h1 class="text-primary">Employees</h1>
+        <div class="card">
+            <p-toast />
+            <p-confirmDialog
+                position="top"
+                rejectButtonStyleClass="p-button-outlined"
+            />
+
+            <p-table
+                [paginator]="true"
+                [showCurrentPageReport]="true"
+                [lazy]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} users"
+                [totalRecords]="totalRecords"
+                [rows]="rowsPerPage"
+                [value]="items"
+                [loading]="loading"
+                (onLazyLoad)="loadItems($event)"
+            >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>
+                            <p-button
+                                (click)="openDialog('create')"
+                                [rounded]="true"
+                                icon="pi pi-plus"
+                            ></p-button>
+                        </th>
+                        <th *ngFor="let col of columns">
+                            {{ col.header }}
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-rowData>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let col of columns">
+                            {{ rowData[col.field] }}
+                        </td>
+                        <td>
+                            <app-split-button
+                                [rowData]="rowData"
+                                (actionSelected)="onAction($event)"
+                            ></app-split-button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

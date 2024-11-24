@@ -1,0 +1,172 @@
+<div class="p-fluid">
+    <form [formGroup]="form">
+        <div class="p-formgrid grid m-0">
+            <div class="field col-6">
+                <label for="firstname">First Name</label>
+                <input
+                    id="firstname"
+                    type="text"
+                    pInputText
+                    formControlName="firstname"
+                    [class.ng-invalid]="form.get('firstname').invalid"
+                />
+                <div
+                    *ngIf="
+                        form.get('firstname').invalid &&
+                        (form.get('firstname').dirty ||
+                            form.get('firstname').touched)
+                    "
+                >
+                    <small
+                        class="p-error"
+                        *ngIf="form.get('firstname').errors?.required"
+                    >
+                        First Name is required.
+                    </small>
+                </div>
+            </div>
+            <div class="field col-6">
+                <label for="surname">Last Name</label>
+                <input
+                    id="surname"
+                    type="text"
+                    pInputText
+                    formControlName="surname"
+                />
+                <div
+                    *ngIf="
+                        form.get('surname').invalid &&
+                        (form.get('surname').dirty ||
+                            form.get('surname').touched)
+                    "
+                >
+                    <small
+                        class="p-error"
+                        *ngIf="form.get('surname').errors?.required"
+                    >
+                        Last Name is required.
+                    </small>
+                </div>
+            </div>
+            <div class="field col-6">
+                <label for="email">Email</label>
+                <input
+                    id="email"
+                    type="text"
+                    pInputText
+                    formControlName="email"
+                />
+                <div
+                    *ngIf="
+                        form.get('email').invalid &&
+                        (form.get('email').dirty || form.get('email').touched)
+                    "
+                >
+                    <small
+                        class="p-error"
+                        *ngIf="form.get('email').errors?.required"
+                    >
+                        Email is required.
+                    </small>
+                    <small
+                        class="p-error"
+                        *ngIf="form.get('email').errors?.email"
+                    >
+                        Please enter a valid email address.
+                    </small>
+                </div>
+            </div>
+            <div class="field col-6">
+                <label for="username">User Name</label>
+                <input
+                    id="username"
+                    type="text"
+                    pInputText
+                    formControlName="username"
+                />
+                <div
+                    *ngIf="
+                        form.get('username').invalid &&
+                        (form.get('username').dirty ||
+                            form.get('username').touched)
+                    "
+                >
+                    <small
+                        class="p-error"
+                        *ngIf="form.get('username').errors?.required"
+                    >
+                        Username is required.
+                    </small>
+                </div>
+            </div>
+            <div class="field col-6">
+                <label for="role">Role</label>
+                <p-dropdown
+                    id="role"
+                    [options]="roles"
+                    formControlName="role"
+                    placeholder="Select a Role"
+                    appendTo="body"
+                >
+                </p-dropdown>
+                <div
+                    *ngIf="
+                        form.get('role').invalid &&
+                        (form.get('role').dirty || form.get('role').touched)
+                    "
+                >
+                    <small
+                        class="p-error"
+                        *ngIf="form.get('role').errors?.required"
+                    >
+                        Role selection is required.
+                    </small>
+                </div>
+            </div>
+            <div class="field col-6">
+                <label for="employment_status">Employment Status</label>
+                <p-dropdown
+                    id="employment_status"
+                    [options]="employment_status"
+                    formControlName="employment_status"
+                    placeholder="Select Employment Status"
+                    appendTo="body"
+                >
+                </p-dropdown>
+                <div
+                    *ngIf="
+                        form.get('employment_status').invalid &&
+                        (form.get('employment_status').dirty ||
+                            form.get('employment_status').touched)
+                    "
+                >
+                    <small
+                        class="p-error"
+                        *ngIf="form.get('employment_status').errors?.required"
+                    >
+                        Employment Status selection is required.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="flex justify-content-between mt-3">
+    <button
+        class="p-button-primary p-button-sm"
+        pButton
+        label="Save"
+        icon="pi pi-check"
+        type="submit"
+        [disabled]="form.invalid"
+        (click)="onSave()"
+    ></button>
+    <button
+        class="p-button-secondary p-button-sm"
+        pButton
+        label="Cancel"
+        icon="pi pi-times"
+        type="button"
+        (click)="onCancel()"
+    ></button>
+</div>

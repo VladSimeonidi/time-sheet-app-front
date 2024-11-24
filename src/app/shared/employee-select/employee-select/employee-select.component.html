@@ -1,0 +1,25 @@
+<ng-container *ngIf="employees.length > 0; else noEmployees">
+    <p-dropdown
+        [options]="employees"
+        [(ngModel)]="selectedEmployee"
+        optionLabel="surname"
+        placeholder="Select Employee"
+        (onChange)="onEmployeeSelect()"
+        appendTo="body"
+    >
+        <ng-template let-selectedEmployee pTemplate="selectedItem">
+            {{ selectedEmployee?.firstname }} {{ selectedEmployee?.surname }}
+        </ng-template>
+
+        <ng-template let-employee pTemplate="item">
+            {{ employee.firstname }} {{ employee.surname }}
+        </ng-template>
+    </p-dropdown>
+</ng-container>
+
+<ng-template #noEmployees>
+    <div>
+        <p-progressSpinner ariaLabel="loading" styleClass="w-2rem h-2rem" />
+        <span>loading...</span>
+    </div>
+</ng-template>

@@ -1,0 +1,142 @@
+<div class="p-fluid">
+    <form [formGroup]="form">
+        <div class="p-formgrid grid m-0">
+            <div class="field col-6">
+                <label for="employee">Employee</label>
+                <app-employee-select
+                    (employeeSelected)="onEmployeeSelected($event)"
+                ></app-employee-select>
+                <div *ngIf="isFieldInvalid('employee')">
+                    <small
+                        class="p-error"
+                        *ngIf="form.get('password').errors?.required"
+                    >
+                        Employee is required.
+                    </small>
+                </div>
+            </div>
+            <div class="field col-6">
+                <label for="date">Date</label>
+                <p-calendar
+                    formControlName="date"
+                    [hourFormat]="'24'"
+                    dateFormat="yy-mm-dd"
+                    placeholder="Select date and time"
+                    appendTo="body"
+                ></p-calendar>
+                <div *ngIf="isFieldInvalid('date')">
+                    <small
+                        class="p-error"
+                        *ngIf="form.get('date').errors?.required"
+                    >
+                        Date is required.
+                    </small>
+                </div>
+            </div>
+            <div class="field col-6">
+                <label for="role">Start Time</label>
+                <p-calendar
+                    formControlName="start_time"
+                    [hourFormat]="'24'"
+                    [showTime]="true"
+                    [timeOnly]="true"
+                    placeholder="Select start time"
+                    appendTo="body"
+                ></p-calendar>
+                <div *ngIf="isFieldInvalid('start_time')">
+                    <small
+                        class="p-error"
+                        *ngIf="form.get('start_time').errors?.required"
+                    >
+                        Start time selection is required.
+                    </small>
+                </div>
+            </div>
+            <div class="field col-6">
+                <label for="end_time">End Time</label>
+                <p-calendar
+                    formControlName="end_time"
+                    [hourFormat]="'24'"
+                    [showTime]="true"
+                    [timeOnly]="true"
+                    placeholder="Select start time"
+                    appendTo="body"
+                ></p-calendar>
+                <div *ngIf="isFieldInvalid('end_time')">
+                    <small
+                        class="p-error"
+                        *ngIf="form.get('end_time').errors?.required"
+                    >
+                        Employment Status selection is required.
+                    </small>
+                </div>
+            </div>
+
+            <div class="field col-6">
+                <label for="total_hours_worked">Total hours worked</label>
+                <div>
+                    <input
+                        id="total_hours_worked"
+                        pInputText
+                        formControlName="total_hours_worked"
+                        readonly
+                    />
+                </div>
+            </div>
+
+            <div class="field col-6">
+                <label for="timesheet_status">Time Sheet Status</label>
+                <div>
+                    <p-dropdown
+                        [options]="timeSheetStatuses"
+                        formControlName="timesheet_status"
+                        optionLabel="header"
+                        optionValue="field"
+                        placeholder="Select Status"
+                        appendTo="body"
+                    >
+                    </p-dropdown>
+                </div>
+
+                <div *ngIf="isFieldInvalid('timesheet_status')">
+                    <small
+                        class="p-error"
+                        *ngIf="form.get('timesheet_status').errors?.required"
+                    >
+                        Timesheet Status selection is required.
+                    </small>
+                </div>
+            </div>
+
+            <div class="field col-6">
+                <label for="break">Break</label>
+                <div>
+                    <p-checkbox
+                        formControlName="breaks"
+                        [binary]="true"
+                        inputId="break"
+                    />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<p-footer class="flex justify-content-between mt-3">
+    <button
+        class="p-button-primary p-button-sm"
+        pButton
+        label="Save"
+        icon="pi pi-check"
+        type="submit"
+        [disabled]="form.invalid"
+        (click)="onSave()"
+    ></button>
+    <button
+        class="p-button-secondary p-button-sm"
+        pButton
+        label="Cancel"
+        icon="pi pi-times"
+        type="button"
+        (click)="onCancel()"
+    ></button>
+</p-footer>

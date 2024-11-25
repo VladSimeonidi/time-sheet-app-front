@@ -11,33 +11,66 @@ import { Employee } from 'src/app/interfaces/employee';
     styleUrl: './create-employee-dialog.component.scss',
 })
 export class CreateEmployeeDialogComponent extends BaseEmployeeDialogComponent {
+    public fields = [
+        {
+            name: 'firstname',
+            label: 'First Name',
+            type: 'text',
+            validators: [Validators.required],
+            format: 'input',
+        },
+        {
+            name: 'surname',
+            label: 'Surname',
+            type: 'text',
+            validators: [Validators.required],
+            format: 'input',
+        },
+        {
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            validators: [Validators.required, Validators.email],
+            format: 'email',
+        },
+        {
+            name: 'username',
+            label: 'Username',
+            type: 'text',
+            validators: [Validators.required],
+            format: 'input',
+        },
+        {
+            name: 'role',
+            label: 'Role',
+            type: 'text',
+            validators: [Validators.required],
+            format: 'dropdown',
+            options: this.roles,
+        },
+        {
+            name: 'employment_status',
+            label: 'Employment Status',
+            type: 'text',
+            validators: [Validators.required],
+            format: 'dropdown',
+            options: this.employment_status,
+        },
+    ];
+
     constructor(public ref: DynamicDialogRef, fb: FormBuilder) {
         super(fb);
     }
 
-    protected initializeData(): void {
-        this.data = {
-            firstname: '',
-            surname: '',
-            email: '',
-            username: '',
-            role: this.roles[0].value,
-            employment_status: this.employment_status[0].value,
-        };
-    }
+    protected initializeData(): void {}
 
     protected override buildForm(): FormGroup {
-        return this.fb.group({
-            firstname: [this.data.firstname, Validators.required],
-            surname: [this.data.surname, Validators.required],
-            email: [this.data.email, [Validators.required, Validators.email]],
-            username: [this.data.username, Validators.required],
-            role: [this.data.role, Validators.required],
-            employment_status: [
-                this.data.employment_status,
-                Validators.required,
-            ],
-        });
+        return (this.form = this.fb.group(
+            this.fields.reduce((controls, field) => {
+                controls[field.name] = ['', field.validators];
+                return controls;
+            }, {})
+        ));
     }
 
     protected saveData(employeeData: Partial<Employee>): void {

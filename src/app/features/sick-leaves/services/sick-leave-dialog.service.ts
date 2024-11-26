@@ -4,6 +4,8 @@ import { SickLeave } from 'src/app/interfaces/sick-leaves';
 import { BaseDialogService } from 'src/app/shared/base-table/base-services/base-dialog.service';
 import { SickLeaveApiService } from './sick-leave-api.service';
 import { SickLeaveNotificationService } from './sick-leave-notification.service';
+import { SickLeaveDialogCreateComponent } from '../dialogs/sick-leave-dialog-create/sick-leave-dialog-create.component';
+import { EditSickLeaveDialogComponent } from '../dialogs/edit-sick-leave-dialog/edit-sick-leave-dialog.component';
 
 @Injectable({
     providedIn: 'root',
@@ -18,15 +20,24 @@ export class SickLeaveDialogService extends BaseDialogService<SickLeave> {
     }
 
     protected override getCreateDialogComponent() {
-        throw new Error('Method not implemented.');
+        return SickLeaveDialogCreateComponent;
     }
     protected override getCreateDialogConfig() {
-        throw new Error('Method not implemented.');
+        return {
+            header: 'Create Leave',
+            width: '50%',
+            closeOnEscape: true,
+        };
     }
     protected override getEditDialogComponent() {
-        throw new Error('Method not implemented.');
+        return EditSickLeaveDialogComponent;
     }
     protected override getEditDialogConfig(item: SickLeave) {
-        throw new Error('Method not implemented.');
+        return {
+            header: 'Edit Leave',
+            width: '50%',
+            closeOnEscape: true,
+            data: { item },
+        };
     }
 }

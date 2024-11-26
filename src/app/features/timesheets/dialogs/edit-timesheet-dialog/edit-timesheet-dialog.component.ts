@@ -20,7 +20,6 @@ export class EditTimeSheetDialogComponent extends BaseTimeSheetDialogComponent {
     }
     protected override initializeData(): void {
         this.data = { ...this.config.data.timesheet };
-        console.log(this.data);
     }
     protected override saveData(timesheet: Partial<TimeSheet>): void {
         this.ref.close({ data: timesheet, action: DialogAction.EDIT });
@@ -29,8 +28,6 @@ export class EditTimeSheetDialogComponent extends BaseTimeSheetDialogComponent {
         this.ref.close({ action: DialogAction.CANCEL });
     }
     protected override buildForm(): FormGroup {
-        console.log(this.data.start_time);
-
         return this.fb.group({
             employee: [this.data.employee, Validators.required],
             date: [new Date(this.data.date), Validators.required],

@@ -62,7 +62,6 @@ export abstract class BaseTimeSheetDialogComponent
             this.form
                 .get('start_time')
                 .setValue(startTime, { emitEvent: true });
-            console.log(startTime);
         }
     }
 

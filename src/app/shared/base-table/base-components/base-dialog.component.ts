@@ -18,11 +18,7 @@ export abstract class BaseDialogComponent<T> implements OnInit {
     }
 
     public onSave() {
-        if (this.form.valid) {
-            this.saveData(this.form.value);
-        } else {
-            console.log('Form is invalid');
-        }
+        if (this.form.valid) this.saveData(this.form.value);
     }
 
     public onCancel() {

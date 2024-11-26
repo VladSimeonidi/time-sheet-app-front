@@ -42,7 +42,5 @@ export abstract class BaseNotificationService implements NotificationService {
             summary: 'warn',
             detail: message,
         });
-
-        console.log('this.entity', this.entity);
     }
 }

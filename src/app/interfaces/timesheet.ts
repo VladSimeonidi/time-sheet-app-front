@@ -1,4 +1,4 @@
-import { TimeSheetStatus } from '../enums/timesheet-status.enum';
+import { Status } from '../enums/timesheet-status.enum';
 
 export interface TimeSheet {
     _id: string;
@@ -8,7 +8,7 @@ export interface TimeSheet {
     end_time: Date;
     breaks: boolean;
     total_hours_worked: number;
-    timesheet_status: TimeSheetStatus | '';
+    timesheet_status: Status | '';
     createdAt: string;
     updatedAt: string;
     __v: number;

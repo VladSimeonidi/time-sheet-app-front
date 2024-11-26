@@ -1,7 +1,7 @@
 import { Directive, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
-import { TimeSheetStatus } from 'src/app/enums/timesheet-status.enum';
+import { Status } from 'src/app/enums/timesheet-status.enum';
 import { Employee } from 'src/app/interfaces/employee';
 import { TimeSheet } from 'src/app/interfaces/timesheet';
 import { BaseDialogComponent } from 'src/app/shared/base-table/base-components/base-dialog.component';
@@ -12,8 +12,8 @@ export abstract class BaseTimeSheetDialogComponent
     implements OnDestroy
 {
     public timeSheetStatuses = [
-        { field: TimeSheetStatus.APPROVED, header: 'Approved' },
-        { field: TimeSheetStatus.DENIED, header: 'Denied' },
+        { field: Status.APPROVED, header: 'Approved' },
+        { field: Status.DENIED, header: 'Denied' },
     ];
 
     private destroy$ = new Subject<void>();

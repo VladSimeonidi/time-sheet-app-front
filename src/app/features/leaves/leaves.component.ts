@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Leave } from 'src/app/interfaces/leaves';
+import { Leave } from 'src/app/interfaces/leave';
 import { BaseListComponent } from 'src/app/shared/base-table/base-components/base-list.component';
 import { LeaveConfirmationService } from './services/leave-confirmation.service';
 import { LeaveDialogService } from './services/leave-dialog.service';

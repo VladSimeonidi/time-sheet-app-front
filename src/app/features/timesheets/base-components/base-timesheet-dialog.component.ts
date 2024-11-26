@@ -22,7 +22,7 @@ export abstract class BaseTimeSheetDialogComponent
         super(fb);
     }
 
-    override ngOnInit(): void {
+    protected initializeComponent() {
         this.initializeForm();
         this.setupFormListeners();
     }

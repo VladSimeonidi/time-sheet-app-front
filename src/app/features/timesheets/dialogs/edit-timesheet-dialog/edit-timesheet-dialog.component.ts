@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BaseTimeSheetDialogComponent } from '../../base-components/base-timesheet.component';
+import { BaseTimeSheetDialogComponent } from '../../base-components/base-timesheet-dialog.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { TimeSheet } from 'src/app/interfaces/timesheet';
@@ -18,16 +18,16 @@ export class EditTimeSheetDialogComponent extends BaseTimeSheetDialogComponent {
     ) {
         super(fb);
     }
-    protected override initializeData(): void {
+    protected initializeData(): void {
         this.data = { ...this.config.data.timesheet };
     }
-    protected override saveData(timesheet: Partial<TimeSheet>): void {
+    protected saveData(timesheet: Partial<TimeSheet>): void {
         this.ref.close({ data: timesheet, action: DialogAction.EDIT });
     }
-    protected override cancelData(): void {
+    protected cancelData(): void {
         this.ref.close({ action: DialogAction.CANCEL });
     }
-    protected override buildForm(): FormGroup {
+    protected buildForm(): FormGroup {
         return this.fb.group({
             employee: [this.data.employee, Validators.required],
             date: [new Date(this.data.date), Validators.required],

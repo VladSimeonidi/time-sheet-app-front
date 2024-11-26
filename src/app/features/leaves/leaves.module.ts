@@ -9,10 +9,23 @@ import { LeaveDialogService } from './services/leave-dialog.service';
 import { BaseTableModule } from 'src/app/shared/base-table/base-table.module';
 import { ConfirmationService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
+import { CreateLeaveDialogComponent } from './dialogs/create-leave-dialog/leave-dialog-create.component';
+import { EditLeaveDialogComponent } from './dialogs/edit-leave-dialog/edit-leave-dialog.component';
+import { EmployeeSelectModule } from 'src/app/shared/employee-select/employee-select.module';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
-    declarations: [LeavesComponent],
-    imports: [BaseTableModule, LeavesRoutingModule],
+    declarations: [
+        LeavesComponent,
+        CreateLeaveDialogComponent,
+        EditLeaveDialogComponent,
+    ],
+    imports: [
+        BaseTableModule,
+        LeavesRoutingModule,
+        EmployeeSelectModule,
+        CalendarModule,
+    ],
     providers: [
         LeaveConfirmationService,
         LeaveNotificationService,

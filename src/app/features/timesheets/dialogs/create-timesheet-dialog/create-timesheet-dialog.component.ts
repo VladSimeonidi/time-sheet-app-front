@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogAction } from 'src/app/enums/dialog-action.enum';
-import { BaseTimeSheetDialogComponent } from '../../base-components/base-timesheet.component';
+import { BaseTimeSheetDialogComponent } from '../../base-components/base-timesheet-dialog.component';
 
 @Component({
     selector: 'app-create-timesheet-dialog',
@@ -18,8 +18,8 @@ export class CreateTimeSheetDialogComponent extends BaseTimeSheetDialogComponent
         this.data = {
             employee: '',
             date: new Date(),
-            start_time: new Date(),
-            end_time: new Date(),
+            start_time: new Date(new Date().setHours(9, 0, 0, 0)),
+            end_time: new Date(new Date().setHours(17, 0, 0, 0)),
             breaks: false,
             total_hours_worked: 0,
             timesheet_status: '',
@@ -32,6 +32,7 @@ export class CreateTimeSheetDialogComponent extends BaseTimeSheetDialogComponent
     protected cancelData(): void {
         this.ref.close({ action: DialogAction.CANCEL });
     }
+
     protected buildForm(): FormGroup {
         return this.fb.group({
             employee: [this.data.employee, Validators.required],

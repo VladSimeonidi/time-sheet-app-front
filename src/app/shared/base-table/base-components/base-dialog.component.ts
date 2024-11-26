@@ -9,7 +9,7 @@ export abstract class BaseDialogComponent<T> implements OnInit {
     constructor(protected fb: FormBuilder) {}
 
     ngOnInit(): void {
-        this.initializeForm();
+        this.initializeComponent();
     }
 
     public isFieldInvalid(fieldName: string): boolean {
@@ -37,4 +37,6 @@ export abstract class BaseDialogComponent<T> implements OnInit {
     protected abstract cancelData(): void;
 
     protected abstract buildForm(): FormGroup;
+
+    protected abstract initializeComponent(): void;
 }

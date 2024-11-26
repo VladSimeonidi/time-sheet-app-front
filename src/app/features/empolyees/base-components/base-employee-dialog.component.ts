@@ -20,4 +20,8 @@ export abstract class BaseEmployeeDialogComponent extends BaseDialogComponent<Em
     constructor(protected override fb: FormBuilder) {
         super(fb);
     }
+
+    protected initializeComponent() {
+        this.initializeForm();
+    }
 }

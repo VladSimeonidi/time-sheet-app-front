@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { SickLeave } from 'src/app/interfaces/sick-leaves';
+import { Leave } from 'src/app/interfaces/leaves';
 import { BaseListComponent } from 'src/app/shared/base-table/base-components/base-list.component';
-import { SickLeaveConfirmationService } from './services/sick-leave-confirmation.service';
-import { SickLeaveDialogService } from './services/sick-leave-dialog.service';
-import { SickLeaveApiService } from './services/sick-leave-api.service';
-import { SickLeavePaginationService } from './services/sick-leave-pagination.service';
-import { SickLeaveNotificationService } from './services/sick-leave-notification.service';
+import { LeaveConfirmationService } from './services/leave-confirmation.service';
+import { LeaveDialogService } from './services/leave-dialog.service';
+import { LeaveApiService } from './services/leave-api.service';
+import { LeavePaginationService } from './services/leave-pagination.service';
+import { LeaveNotificationService } from './services/leave-notification.service';
 
 @Component({
-    selector: 'app-sick-leaves',
-    templateUrl: './sick-leaves.component.html',
-    styleUrl: './sick-leaves.component.scss',
+    selector: 'app-leaves',
+    templateUrl: './leaves.component.html',
+    styleUrl: './leaves.component.scss',
 })
-export class SickLeavesComponent extends BaseListComponent<SickLeave> {
+export class LeavesComponent extends BaseListComponent<Leave> {
     public columns = [
         {
             field: 'firstname',
@@ -43,11 +43,11 @@ export class SickLeavesComponent extends BaseListComponent<SickLeave> {
     ];
 
     constructor(
-        protected override confirmationService: SickLeaveConfirmationService,
-        protected override dialogService: SickLeaveDialogService,
-        protected override crudService: SickLeaveApiService,
-        protected override paginationService: SickLeavePaginationService,
-        protected override notificationService: SickLeaveNotificationService
+        protected override confirmationService: LeaveConfirmationService,
+        protected override dialogService: LeaveDialogService,
+        protected override crudService: LeaveApiService,
+        protected override paginationService: LeavePaginationService,
+        protected override notificationService: LeaveNotificationService
     ) {
         super(
             dialogService,
@@ -58,7 +58,7 @@ export class SickLeavesComponent extends BaseListComponent<SickLeave> {
         );
     }
 
-    public getCellValue(rowData: SickLeave, col: any): any {
+    public getCellValue(rowData: Leave, col: any): any {
         return col.resolver ? col.resolver(rowData) : rowData[col.field];
     }
 }

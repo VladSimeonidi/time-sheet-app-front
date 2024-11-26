@@ -43,9 +43,9 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['/features/timesheets'],
                     },
                     {
-                        label: 'Sick Leaves',
+                        label: 'Leaves',
                         icon: 'pi pi-fw pi-heart',
-                        routerLink: ['/features/sick-leaves'],
+                        routerLink: ['/features/leaves'],
                     },
                     // {
                     //     label: 'Auth',

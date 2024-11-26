@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
 import { DialogService } from 'primeng/dynamicdialog';
-import { SickLeave } from 'src/app/interfaces/sick-leaves';
+import { Leave } from 'src/app/interfaces/leaves';
 import { BaseDialogService } from 'src/app/shared/base-table/base-services/base-dialog.service';
-import { SickLeaveApiService } from './sick-leave-api.service';
-import { SickLeaveNotificationService } from './sick-leave-notification.service';
-import { SickLeaveDialogCreateComponent } from '../dialogs/sick-leave-dialog-create/sick-leave-dialog-create.component';
-import { EditSickLeaveDialogComponent } from '../dialogs/edit-sick-leave-dialog/edit-sick-leave-dialog.component';
+import { LeaveApiService } from './leave-api.service';
+import { LeaveNotificationService } from './leave-notification.service';
+import { LeaveDialogCreateComponent } from '../dialogs/create-leave-dialog/leave-dialog-create.component';
+import { EditLeaveDialogComponent } from '../dialogs/edit-leave-dialog/edit-leave-dialog.component';
 
 @Injectable({
     providedIn: 'root',
 })
-export class SickLeaveDialogService extends BaseDialogService<SickLeave> {
+export class LeaveDialogService extends BaseDialogService<Leave> {
     constructor(
         protected override dialogService: DialogService,
-        protected override crudService: SickLeaveApiService,
-        protected override notificationService: SickLeaveNotificationService
+        protected override crudService: LeaveApiService,
+        protected override notificationService: LeaveNotificationService
     ) {
         super(dialogService, crudService, notificationService, 'employee');
     }
 
     protected override getCreateDialogComponent() {
-        return SickLeaveDialogCreateComponent;
+        return LeaveDialogCreateComponent;
     }
     protected override getCreateDialogConfig() {
         return {
@@ -30,9 +30,9 @@ export class SickLeaveDialogService extends BaseDialogService<SickLeave> {
         };
     }
     protected override getEditDialogComponent() {
-        return EditSickLeaveDialogComponent;
+        return EditLeaveDialogComponent;
     }
-    protected override getEditDialogConfig(item: SickLeave) {
+    protected override getEditDialogConfig(item: Leave) {
         return {
             header: 'Edit Leave',
             width: '50%',

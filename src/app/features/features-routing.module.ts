@@ -26,10 +26,10 @@ import { RouterModule } from '@angular/router';
                     ),
             },
             {
-                path: 'sick-leaves',
+                path: 'leaves',
                 loadChildren: () =>
-                    import('./sick-leaves/sick-leaves.module').then(
-                        (m) => m.SickLeavesModule
+                    import('./leaves/leaves.module').then(
+                        (m) => m.LeavesModule
                     ),
             },
             { path: '**', redirectTo: '/notfound' },

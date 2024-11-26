@@ -1,4 +1,4 @@
-export interface SickLeave {
+export interface Leave {
     _id: string;
     employee: string;
     leave_type: string;

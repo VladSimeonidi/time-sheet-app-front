@@ -16,7 +16,7 @@ export class LeaveDialogService extends BaseDialogService<Leave> {
         protected override crudService: LeaveApiService,
         protected override notificationService: LeaveNotificationService
     ) {
-        super(dialogService, crudService, notificationService, 'employee');
+        super(dialogService, crudService, notificationService, 'leave');
     }
 
     protected override getCreateDialogComponent() {

@@ -21,6 +21,7 @@
                 <p-calendar
                     formControlName="start_date"
                     placeholder="Select start date"
+                    dateFormat="dd-mm-yy"
                     appendTo="body"
                 ></p-calendar>
                 <div *ngIf="isFieldInvalid('start_date')">
@@ -36,6 +37,7 @@
                 <label for="role">End Date</label>
                 <p-calendar
                     formControlName="end_date"
+                    dateFormat="dd-mm-yy"
                     placeholder="Select start time"
                     appendTo="body"
                 ></p-calendar>

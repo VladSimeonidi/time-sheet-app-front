@@ -6,7 +6,7 @@ import { LeaveNotificationService } from './services/leave-notification.service'
 import { LeavePaginationService } from './services/leave-pagination.service';
 import { LeaveApiService } from './services/leave-api.service';
 import { LeaveDialogService } from './services/leave-dialog.service';
-import { BaseTableModule } from 'src/app/shared/base-table/base-table.module';
+import { SharedTableModule } from 'src/app/shared/table/shared-table.module';
 import { ConfirmationService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { CreateLeaveDialogComponent } from './dialogs/create-leave-dialog/leave-dialog-create.component';
@@ -21,7 +21,7 @@ import { CalendarModule } from 'primeng/calendar';
         EditLeaveDialogComponent,
     ],
     imports: [
-        BaseTableModule,
+        SharedTableModule,
         LeavesRoutingModule,
         EmployeeSelectModule,
         CalendarModule,

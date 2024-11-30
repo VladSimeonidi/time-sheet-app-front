@@ -55,9 +55,9 @@ export abstract class BaseTimeSheetDialogComponent
         this.setupFormListener('end_time', () => this.updateTotalHoursWorked());
     }
 
-    private updateStartTime(date: string) {
+    private updateStartTime(date: Date) {
         if (date) {
-            const startTime = new Date(date);
+            const startTime: Date = new Date(date);
             startTime.setHours(startTime.getHours() + 9);
             this.form
                 .get('start_time')
@@ -65,7 +65,7 @@ export abstract class BaseTimeSheetDialogComponent
         }
     }
 
-    private updateEndTime(startTime: string) {
+    private updateEndTime(startTime: Date) {
         if (startTime) {
             const initialTime: Date = new Date(startTime);
             const statusInHours: number = 8;
@@ -79,14 +79,14 @@ export abstract class BaseTimeSheetDialogComponent
     }
 
     private updateTotalHoursWorked() {
-        const startTime = this.form.get('start_time').value;
-        const endTime = this.form.get('end_time').value;
+        const startTime: Date = this.form.get('start_time').value;
+        const endTime: Date = this.form.get('end_time').value;
 
         if (startTime && endTime) {
-            const start = new Date(startTime);
-            const end = new Date(endTime);
-            const diffInMs = end.getTime() - start.getTime();
-            const totalHours = diffInMs / (1000 * 60 * 60);
+            const start: Date = new Date(startTime);
+            const end: Date = new Date(endTime);
+            const diffInMs: number = end.getTime() - start.getTime();
+            const totalHours: number = diffInMs / (1000 * 60 * 60);
             this.form.get('total_hours_worked').setValue(totalHours.toFixed(2));
         }
     }

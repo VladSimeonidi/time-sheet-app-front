@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogAction } from 'src/app/enums/dialog-action.enum';
-import { BaseEmployeeDialogComponent } from 'src/app/features/empolyees/base-components/base-employee-dialog.component';
 import { Employee } from 'src/app/interfaces/employee';
+import { BaseEmployeeDialogComponent } from '../base-components/base-employee-dialog.component';
 
 @Component({
     selector: 'app-create-employee-dialog',

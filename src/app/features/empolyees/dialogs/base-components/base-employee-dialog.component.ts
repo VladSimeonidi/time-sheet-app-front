@@ -1,7 +1,7 @@
 import { Directive } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Employee } from 'src/app/interfaces/employee';
-import { BaseDialogComponent } from '../../../shared/base-table/base-components/base-dialog.component';
+import { BaseDialogComponent } from 'src/app/shared/base-table/base-components/base-dialog.component';
 
 @Directive()
 export abstract class BaseEmployeeDialogComponent extends BaseDialogComponent<Employee> {

@@ -10,7 +10,7 @@ import { EmployeeDialogService } from './services/employees-dialog.service';
 import { EmployeePaginationService } from './services/employee-pagination.service';
 import { EmployeeNotificationService } from './services/employee-notification.service';
 import { EmployeeConfirmationService } from './services/employee-confirmation.service';
-import { BaseTableModule } from 'src/app/shared/base-table/base-table.module';
+import { SharedTableModule } from 'src/app/shared/table/shared-table.module';
 
 @NgModule({
     declarations: [
@@ -18,7 +18,7 @@ import { BaseTableModule } from 'src/app/shared/base-table/base-table.module';
         EditEmployeeDialogComponent,
         CreateEmployeeDialogComponent,
     ],
-    imports: [EmployeesRoutingModule, BaseTableModule],
+    imports: [EmployeesRoutingModule, SharedTableModule],
     providers: [
         EmployeesApiService,
         DialogService,

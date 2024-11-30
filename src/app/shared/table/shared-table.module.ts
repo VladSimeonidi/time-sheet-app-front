@@ -40,4 +40,4 @@ import { AppSplitButtonComponent } from '../app-split-button/app-split-button.co
         AppSplitButtonComponent,
     ],
 })
-export class BaseTableModule {}
+export class SharedTableModule {}

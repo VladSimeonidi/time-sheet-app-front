@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { TimeSheet } from 'src/app/interfaces/timesheet';
-import { BaseListComponent } from 'src/app/shared/base-table/base-components/base-list.component';
+import { BaseTableComponent } from 'src/app/shared/base-table/base-components/base-table.component';
 import { TimeSheetsConfirmationService } from './services/timesheets-confirmation.service';
 import { TimeSheetPaginationService } from './services/timesheets-pagination.service';
 import { TimeSheetsNotificationService } from './services/timesheets-notification.service';
 import { TimeSheetsDialogService } from './services/timesheets-dialog.service';
 import { TimeSheetsApiService } from './services/timesheets-api.service';
+import { BaseCrudTableComponent } from 'src/app/shared/base-table/base-components/base-crud-table.component';
 
 @Component({
     selector: 'app-timesheet',
     templateUrl: './timesheets.component.html',
     styleUrl: './timesheets.component.scss',
 })
-export class TimeSheetsComponent extends BaseListComponent<TimeSheet> {
+export class TimeSheetsComponent extends BaseCrudTableComponent<TimeSheet> {
     public columns = [
         { field: '', header: 'First Name' },
         { field: '', header: 'Surname' },
@@ -25,11 +26,11 @@ export class TimeSheetsComponent extends BaseListComponent<TimeSheet> {
         { field: '', header: 'Delete' },
     ];
     constructor(
-        protected override confirmationService: TimeSheetsConfirmationService,
-        protected override dialogService: TimeSheetsDialogService,
-        protected override crudService: TimeSheetsApiService,
-        protected override paginationService: TimeSheetPaginationService,
-        protected override notificationService: TimeSheetsNotificationService
+        confirmationService: TimeSheetsConfirmationService,
+        dialogService: TimeSheetsDialogService,
+        crudService: TimeSheetsApiService,
+        paginationService: TimeSheetPaginationService,
+        notificationService: TimeSheetsNotificationService
     ) {
         super(
             dialogService,

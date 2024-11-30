@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { TimeSheetRoutingModule } from './timesheets-routing.module';
-import { BaseTableModule } from 'src/app/shared/base-table/base-table.module';
+import { SharedTableModule } from 'src/app/shared/table/shared-table.module';
 import { CreateTimeSheetDialogComponent } from './dialogs/create-timesheet-dialog/create-timesheet-dialog.component';
 import { TimeSheetsComponent } from './timesheets.component';
 import { TimeSheetsApiService } from './services/timesheets-api.service';
@@ -22,7 +22,7 @@ import { EditTimeSheetDialogComponent } from './dialogs/edit-timesheet-dialog/ed
         TimeSheetsComponent,
     ],
     imports: [
-        BaseTableModule,
+        SharedTableModule,
         TimeSheetRoutingModule,
         EmployeeSelectModule,
         CalendarModule,

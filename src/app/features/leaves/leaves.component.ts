@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { Leave } from 'src/app/interfaces/leave';
-import { BaseListComponent } from 'src/app/shared/base-table/base-components/base-list.component';
+import { BaseTableComponent } from 'src/app/shared/base-table/base-components/base-table.component';
 import { LeaveConfirmationService } from './services/leave-confirmation.service';
 import { LeaveDialogService } from './services/leave-dialog.service';
 import { LeaveApiService } from './services/leave-api.service';
 import { LeavePaginationService } from './services/leave-pagination.service';
 import { LeaveNotificationService } from './services/leave-notification.service';
+import { BaseCrudTableComponent } from 'src/app/shared/base-table/base-components/base-crud-table.component';
 
 @Component({
     selector: 'app-leaves',
     templateUrl: './leaves.component.html',
     styleUrl: './leaves.component.scss',
 })
-export class LeavesComponent extends BaseListComponent<Leave> {
+export class LeavesComponent extends BaseCrudTableComponent<Leave> {
     public columns = [
         {
             field: 'firstname',
@@ -43,11 +44,11 @@ export class LeavesComponent extends BaseListComponent<Leave> {
     ];
 
     constructor(
-        protected override confirmationService: LeaveConfirmationService,
-        protected override dialogService: LeaveDialogService,
-        protected override crudService: LeaveApiService,
-        protected override paginationService: LeavePaginationService,
-        protected override notificationService: LeaveNotificationService
+        confirmationService: LeaveConfirmationService,
+        dialogService: LeaveDialogService,
+        crudService: LeaveApiService,
+        paginationService: LeavePaginationService,
+        notificationService: LeaveNotificationService
     ) {
         super(
             dialogService,

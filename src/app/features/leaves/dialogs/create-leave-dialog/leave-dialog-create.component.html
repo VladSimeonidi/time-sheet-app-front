@@ -39,6 +39,8 @@
                     placeholder="Select start time"
                     dateFormat="dd-mm-yy"
                     appendTo="body"
+                    [minDate]="form.get('start_date')?.value"
+                    [readonlyInput]="true"
                 ></p-calendar>
                 <div *ngIf="isFieldInvalid('end_date')">
                     <small

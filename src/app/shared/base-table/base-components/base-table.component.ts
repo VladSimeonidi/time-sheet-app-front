@@ -1,19 +1,8 @@
-import { OnDestroy, Directive } from '@angular/core';
-import {
-    catchError,
-    EMPTY,
-    filter,
-    Subject,
-    switchMap,
-    takeUntil,
-    tap,
-} from 'rxjs';
+import { Directive } from '@angular/core';
+import { catchError, EMPTY, tap } from 'rxjs';
 import { BaseApiService as BaseApiService } from '../base-services/base-api.service';
-import { DialogAction } from 'src/app/enums/dialog-action.enum';
-import { BaseDialogService } from '../base-services/base-dialog.service';
 import { BasePaginationService } from '../base-services/base-pagination.service';
 import { ErrorMessages } from 'src/app/enums/error-messages.enum';
-import { BaseConfirmationService } from '../base-services/base-confirmation.service';
 import { BaseNotificationService } from '../base-services/base-notifiaction.service';
 
 @Directive()
@@ -24,11 +13,9 @@ export abstract class BaseTableComponent<T> {
     public loading = true;
 
     constructor(
-        protected dialogService: BaseDialogService<T>,
         protected crudService: BaseApiService<T>,
         protected paginationService: BasePaginationService,
-        protected notificationService: BaseNotificationService,
-        protected confirmationService: BaseConfirmationService
+        protected notificationService: BaseNotificationService
     ) {}
 
     public loadItems(event: any): void {

@@ -23,19 +23,13 @@ export abstract class BaseCrudTableComponent<T>
 {
     private destroy$ = new Subject<void>();
     constructor(
-        dialogService: BaseDialogService<T>,
+        protected dialogService: BaseDialogService<T>,
         crudService: BaseApiService<T>,
         paginationService: BasePaginationService,
         notificationService: BaseNotificationService,
-        confirmationService: BaseConfirmationService
+        protected confirmationService: BaseConfirmationService
     ) {
-        super(
-            dialogService,
-            crudService,
-            paginationService,
-            notificationService,
-            confirmationService
-        );
+        super(crudService, paginationService, notificationService);
     }
 
     ngOnDestroy(): void {

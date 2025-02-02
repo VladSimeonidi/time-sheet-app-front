@@ -13,6 +13,7 @@ import { CreateLeaveDialogComponent } from './dialogs/create-leave-dialog/leave-
 import { EditLeaveDialogComponent } from './dialogs/edit-leave-dialog/edit-leave-dialog.component';
 import { EmployeeSelectModule } from 'src/app/shared/employee-select/employee-select.module';
 import { CalendarModule } from 'primeng/calendar';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -34,6 +35,7 @@ import { CalendarModule } from 'primeng/calendar';
         LeaveDialogService,
         DialogService,
         ConfirmationService,
+        DatePipe,
     ],
 })
 export class LeavesModule {}

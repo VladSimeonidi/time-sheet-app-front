@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Leave } from 'src/app/interfaces/leave';
-import { BaseTableComponent } from 'src/app/shared/base-table/base-components/base-table.component';
 import { LeaveConfirmationService } from './services/leave-confirmation.service';
 import { LeaveDialogService } from './services/leave-dialog.service';
 import { LeaveApiService } from './services/leave-api.service';
 import { LeavePaginationService } from './services/leave-pagination.service';
 import { LeaveNotificationService } from './services/leave-notification.service';
 import { BaseCrudTableComponent } from 'src/app/shared/base-table/base-components/base-crud-table.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-leaves',
@@ -32,10 +32,18 @@ export class LeavesComponent extends BaseCrudTableComponent<Leave> {
         {
             field: 'start_date',
             header: 'Start Date',
+            resolver: (rowData: any) =>
+                rowData.start_date
+                    ? this.datePipe.transform(rowData.start_date, 'dd/MM/yyyy')
+                    : '',
         },
         {
             field: 'end_date',
             header: 'End Date',
+            resolver: (rowData: any) =>
+                rowData.end_date
+                    ? this.datePipe.transform(rowData.end_date, 'dd/MM/yyyy')
+                    : '',
         },
         {
             field: 'status',
@@ -48,7 +56,8 @@ export class LeavesComponent extends BaseCrudTableComponent<Leave> {
         dialogService: LeaveDialogService,
         crudService: LeaveApiService,
         paginationService: LeavePaginationService,
-        notificationService: LeaveNotificationService
+        notificationService: LeaveNotificationService,
+        private datePipe: DatePipe
     ) {
         super(
             dialogService,

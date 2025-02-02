@@ -48,9 +48,9 @@ export abstract class BaseDialogService<T> {
                         `Succeeded to ${action} ${this.entity}`
                     )
                 ),
-                catchError(() => {
+                catchError((res) => {
                     this.notificationService.showError(
-                        `Failed to ${action} ${this.entity}`
+                        `Failed to ${action} ${this.entity} (${res.error})`
                     );
                     return EMPTY;
                 })

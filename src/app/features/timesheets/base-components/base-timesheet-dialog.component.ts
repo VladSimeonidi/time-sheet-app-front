@@ -25,6 +25,7 @@ export abstract class BaseTimeSheetDialogComponent
     protected initializeComponent() {
         this.initializeForm();
         this.setupFormListeners();
+        this.updateTotalHoursWorked();
     }
 
     ngOnDestroy(): void {

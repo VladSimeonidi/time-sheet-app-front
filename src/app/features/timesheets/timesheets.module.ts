@@ -14,6 +14,7 @@ import { EmployeeSelectModule } from 'src/app/shared/employee-select/employee-se
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { EditTimeSheetDialogComponent } from './dialogs/edit-timesheet-dialog/edit-timesheet-dialog.component';
+import { UnavailableDatesApiService } from '../../shared/unavailable-dates/unavailable-dates-api-service';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { EditTimeSheetDialogComponent } from './dialogs/edit-timesheet-dialog/ed
     ],
     providers: [
         TimeSheetsApiService,
+        UnavailableDatesApiService,
         TimeSheetsConfirmationService,
         TimeSheetsDialogService,
         TimeSheetsNotificationService,

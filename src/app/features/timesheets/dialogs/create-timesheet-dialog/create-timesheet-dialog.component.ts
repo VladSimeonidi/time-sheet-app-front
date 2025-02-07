@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogAction } from 'src/app/enums/dialog-action.enum';
 import { BaseTimeSheetDialogComponent } from '../../base-components/base-timesheet-dialog.component';
+import { UnavailableDatesApiService } from '../../../../shared/unavailable-dates/unavailable-dates-api-service';
 
 @Component({
     selector: 'app-create-timesheet-dialog',
@@ -10,8 +11,12 @@ import { BaseTimeSheetDialogComponent } from '../../base-components/base-timeshe
     styleUrl: './create-timesheet-dialog.component.scss',
 })
 export class CreateTimeSheetDialogComponent extends BaseTimeSheetDialogComponent {
-    constructor(public ref: DynamicDialogRef, fb: FormBuilder) {
-        super(fb);
+    constructor(
+        unavailableDatesApiService: UnavailableDatesApiService,
+        public ref: DynamicDialogRef,
+        fb: FormBuilder
+    ) {
+        super(fb, unavailableDatesApiService);
     }
 
     protected initializeData(): void {

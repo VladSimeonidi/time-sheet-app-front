@@ -22,6 +22,7 @@
                     [hourFormat]="'24'"
                     dateFormat="dd-mm-yy"
                     placeholder="Select date and time"
+                    [disabledDates]="disabledDates"
                     appendTo="body"
                 ></p-calendar>
                 <div *ngIf="isFieldInvalid('date')">

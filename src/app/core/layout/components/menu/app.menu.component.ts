@@ -27,11 +27,11 @@ export class AppMenuComponent implements OnInit {
                 label: 'features',
                 icon: 'pi pi-fw pi-briefcase',
                 items: [
-                    {
-                        label: 'Landing',
-                        icon: 'pi pi-fw pi-globe',
-                        routerLink: ['/landing'],
-                    },
+                    // {
+                    //     label: 'Landing',
+                    //     icon: 'pi pi-fw pi-globe',
+                    //     routerLink: ['/landing'],
+                    // },
                     {
                         label: 'Employees',
                         icon: 'pi pi-users',

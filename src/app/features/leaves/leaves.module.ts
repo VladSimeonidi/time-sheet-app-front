@@ -4,7 +4,7 @@ import { LeavesComponent } from './leaves.component';
 import { LeaveConfirmationService } from './services/leave-confirmation.service';
 import { LeaveNotificationService } from './services/leave-notification.service';
 import { LeavePaginationService } from './services/leave-pagination.service';
-import { LeaveApiService } from './services/leave-api.service';
+import { LeaveCRUDApiService } from './services/leave-crud-api.service';
 import { LeaveDialogService } from './services/leave-dialog.service';
 import { SharedTableModule } from 'src/app/shared/table/shared-table.module';
 import { ConfirmationService } from 'primeng/api';
@@ -32,7 +32,7 @@ import { UnavailableDatesApiService } from 'src/app/shared/unavailable-dates/una
         LeaveConfirmationService,
         LeaveNotificationService,
         LeavePaginationService,
-        LeaveApiService,
+        LeaveCRUDApiService,
         LeaveDialogService,
         DialogService,
         ConfirmationService,

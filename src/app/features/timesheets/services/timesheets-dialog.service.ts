@@ -4,14 +4,14 @@ import { TimeSheet } from 'src/app/interfaces/timesheet';
 import { BaseDialogService } from 'src/app/shared/base-table/base-services/base-dialog.service';
 import { CreateTimeSheetDialogComponent } from '../dialogs/create-timesheet-dialog/create-timesheet-dialog.component';
 import { TimeSheetsNotificationService } from './timesheets-notification.service';
-import { TimeSheetsApiService } from './timesheets-api.service';
+import { TimeSheetsCRUDApiService } from './timesheets-crud-api.service';
 import { EditTimeSheetDialogComponent } from '../dialogs/edit-timesheet-dialog/edit-timesheet-dialog.component';
 
 @Injectable()
 export class TimeSheetsDialogService extends BaseDialogService<TimeSheet> {
     constructor(
         protected override dialogService: DialogService,
-        protected override crudService: TimeSheetsApiService,
+        protected override crudService: TimeSheetsCRUDApiService,
         protected override notificationService: TimeSheetsNotificationService
     ) {
         super(dialogService, crudService, notificationService, 'timesheet');

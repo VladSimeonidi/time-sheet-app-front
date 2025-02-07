@@ -1,6 +1,6 @@
 import { Directive, OnDestroy } from '@angular/core';
 import { BaseTableComponent } from './base-table.component';
-import { BaseApiService } from '../base-services/base-api.service';
+import { BaseCRUDApiService } from '../base-services/base-crud-api.service';
 import { BaseConfirmationService } from '../base-services/base-confirmation.service';
 import { BaseDialogService } from '../base-services/base-dialog.service';
 import { BaseNotificationService } from '../base-services/base-notifiaction.service';
@@ -24,7 +24,7 @@ export abstract class BaseCrudTableComponent<T>
     private destroy$ = new Subject<void>();
     constructor(
         protected dialogService: BaseDialogService<T>,
-        crudService: BaseApiService<T>,
+        crudService: BaseCRUDApiService<T>,
         paginationService: BasePaginationService,
         notificationService: BaseNotificationService,
         protected confirmationService: BaseConfirmationService

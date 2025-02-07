@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Leave } from 'src/app/interfaces/leave';
 import { LeaveConfirmationService } from './services/leave-confirmation.service';
 import { LeaveDialogService } from './services/leave-dialog.service';
-import { LeaveApiService } from './services/leave-api.service';
+import { LeaveCRUDApiService } from './services/leave-crud-api.service';
 import { LeavePaginationService } from './services/leave-pagination.service';
 import { LeaveNotificationService } from './services/leave-notification.service';
 import { BaseCrudTableComponent } from 'src/app/shared/base-table/base-components/base-crud-table.component';
@@ -54,7 +54,7 @@ export class LeavesComponent extends BaseCrudTableComponent<Leave> {
     constructor(
         confirmationService: LeaveConfirmationService,
         dialogService: LeaveDialogService,
-        crudService: LeaveApiService,
+        crudService: LeaveCRUDApiService,
         paginationService: LeavePaginationService,
         notificationService: LeaveNotificationService,
         private datePipe: DatePipe

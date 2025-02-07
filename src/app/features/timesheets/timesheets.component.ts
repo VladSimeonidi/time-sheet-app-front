@@ -5,7 +5,7 @@ import { TimeSheetsConfirmationService } from './services/timesheets-confirmatio
 import { TimeSheetPaginationService } from './services/timesheets-pagination.service';
 import { TimeSheetsNotificationService } from './services/timesheets-notification.service';
 import { TimeSheetsDialogService } from './services/timesheets-dialog.service';
-import { TimeSheetsApiService } from './services/timesheets-api.service';
+import { TimeSheetsCRUDApiService } from './services/timesheets-crud-api.service';
 import { BaseCrudTableComponent } from 'src/app/shared/base-table/base-components/base-crud-table.component';
 
 @Component({
@@ -28,7 +28,7 @@ export class TimeSheetsComponent extends BaseCrudTableComponent<TimeSheet> {
     constructor(
         confirmationService: TimeSheetsConfirmationService,
         dialogService: TimeSheetsDialogService,
-        crudService: TimeSheetsApiService,
+        crudService: TimeSheetsCRUDApiService,
         paginationService: TimeSheetPaginationService,
         notificationService: TimeSheetsNotificationService
     ) {

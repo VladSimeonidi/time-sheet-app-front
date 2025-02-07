@@ -3,7 +3,7 @@ import { TimeSheetRoutingModule } from './timesheets-routing.module';
 import { SharedTableModule } from 'src/app/shared/table/shared-table.module';
 import { CreateTimeSheetDialogComponent } from './dialogs/create-timesheet-dialog/create-timesheet-dialog.component';
 import { TimeSheetsComponent } from './timesheets.component';
-import { TimeSheetsApiService } from './services/timesheets-api.service';
+import { TimeSheetsCRUDApiService } from './services/timesheets-crud-api.service';
 import { TimeSheetsConfirmationService } from './services/timesheets-confirmation.service';
 import { TimeSheetsDialogService } from './services/timesheets-dialog.service';
 import { TimeSheetsNotificationService } from './services/timesheets-notification.service';
@@ -30,7 +30,7 @@ import { UnavailableDatesApiService } from '../../shared/unavailable-dates/unava
         CheckboxModule,
     ],
     providers: [
-        TimeSheetsApiService,
+        TimeSheetsCRUDApiService,
         UnavailableDatesApiService,
         TimeSheetsConfirmationService,
         TimeSheetsDialogService,

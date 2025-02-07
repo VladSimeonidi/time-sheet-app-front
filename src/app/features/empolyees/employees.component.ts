@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EmployeesApiService } from './services/employees-api.service';
+import { EmployeesCRUDApiService } from './services/employees-crud-api.service';
 import { Employee } from 'src/app/interfaces/employee';
 import { BaseTableComponent } from 'src/app/shared/base-table/base-components/base-table.component';
 import { EmployeeDialogService } from './services/employees-dialog.service';
@@ -26,7 +26,7 @@ export class EmployeesComponent extends BaseCrudTableComponent<Employee> {
     constructor(
         confirmationService: EmployeeConfirmationService,
         dialogService: EmployeeDialogService,
-        crudService: EmployeesApiService,
+        crudService: EmployeesCRUDApiService,
         paginationService: EmployeePaginationService,
         notificationService: EmployeeNotificationService
     ) {

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export abstract class BaseApiService<T> {
+export abstract class BaseCRUDApiService<T> {
     protected apiUrl: string;
 
     constructor(protected http: HttpClient, private endpoint: string) {

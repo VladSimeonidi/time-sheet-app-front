@@ -12,9 +12,6 @@ export abstract class BaseTimeSheetDialogComponent
     extends BaseDialogComponent<TimeSheet>
     implements OnDestroy
 {
-    private readonly START_HOUR_OFFSET = 9;
-    private readonly WORK_HOURS = 8;
-
     public timeSheetStatuses = [
         { field: Status.APPROVED, header: 'Approved' },
         { field: Status.DENIED, header: 'Denied' },
@@ -22,7 +19,11 @@ export abstract class BaseTimeSheetDialogComponent
 
     public disabledDates: Date[] = [];
 
+    private readonly START_HOUR_OFFSET = 9;
+    private readonly WORK_HOURS = 8;
+
     private destroy$ = new Subject<void>();
+    private breaks: boolean = false;
 
     constructor(
         fb: FormBuilder,
@@ -34,6 +35,7 @@ export abstract class BaseTimeSheetDialogComponent
     protected initializeComponent() {
         this.initializeForm();
         this.setupFormListeners();
+        this.subscribeToBreaks();
         this.updateTotalHoursWorked();
     }
 
@@ -102,16 +104,53 @@ export abstract class BaseTimeSheetDialogComponent
         }
     }
 
+    private isBreaksIncluded(): boolean {
+        return !!this.breaks;
+    }
+
     private updateTotalHoursWorked() {
-        const startTime: Date = this.form.get('start_time').value;
-        const endTime: Date = this.form.get('end_time').value;
+        const startTimeControl = this.form.get('start_time');
+        const endTimeControl = this.form.get('end_time');
+        const totalHoursControl = this.form.get('total_hours_worked');
+
+        if (!startTimeControl || !endTimeControl || !totalHoursControl) {
+            console.error('Form controls are missing');
+            return;
+        }
+
+        const startTime: Date = startTimeControl.value;
+        const endTime: Date = endTimeControl.value;
 
         if (startTime && endTime) {
-            const start: Date = new Date(startTime);
-            const end: Date = new Date(endTime);
-            const diffInMs: number = end.getTime() - start.getTime();
-            const totalHours: number = diffInMs / (1000 * 60 * 60);
-            this.form.get('total_hours_worked').setValue(totalHours.toFixed(2));
+            const start = new Date(startTime);
+            const end = new Date(endTime);
+            const diffInMs = end.getTime() - start.getTime();
+            let totalHours = diffInMs / (1000 * 60 * 60);
+
+            if (this.isBreaksIncluded()) {
+                totalHours -= 1;
+            }
+
+            totalHoursControl.setValue(totalHours.toFixed(2));
+        }
+    }
+
+    private subscribeToBreaks() {
+        const breaksControl = this.form.get('breaks');
+
+        if (breaksControl) {
+            this.breaks = breaksControl.value;
+
+            breaksControl.valueChanges
+                .pipe(takeUntil(this.destroy$))
+                .subscribe({
+                    next: (value) => {
+                        this.breaks = value;
+                        this.updateTotalHoursWorked();
+                    },
+                    error: (err) =>
+                        console.error('Error in breaks subscription:', err),
+                });
         }
     }
 }

@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 import { catchError, EMPTY, tap } from 'rxjs';
-import { BaseApiService as BaseApiService } from '../base-services/base-api.service';
+import { BaseCRUDApiService as BaseCRUDApiService } from '../base-services/base-crud-api.service';
 import { BasePaginationService } from '../base-services/base-pagination.service';
 import { ErrorMessages } from 'src/app/enums/error-messages.enum';
 import { BaseNotificationService } from '../base-services/base-notifiaction.service';
@@ -13,7 +13,7 @@ export abstract class BaseTableComponent<T> {
     public loading = true;
 
     constructor(
-        protected crudService: BaseApiService<T>,
+        protected crudService: BaseCRUDApiService<T>,
         protected paginationService: BasePaginationService,
         protected notificationService: BaseNotificationService
     ) {}

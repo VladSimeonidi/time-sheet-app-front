@@ -5,13 +5,13 @@ import {
 } from 'primeng/dynamicdialog';
 import { catchError, EMPTY, Observable, tap } from 'rxjs';
 import { DialogAction } from 'src/app/enums/dialog-action.enum';
-import { BaseApiService } from './base-api.service';
+import { BaseCRUDApiService } from './base-crud-api.service';
 import { BaseNotificationService } from './base-notifiaction.service';
 
 export abstract class BaseDialogService<T> {
     constructor(
         protected dialogService: DialogService,
-        protected crudService: BaseApiService<T>,
+        protected crudService: BaseCRUDApiService<T>,
         protected notificationService: BaseNotificationService,
         private entity: string
     ) {}

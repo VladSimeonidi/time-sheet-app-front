@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { EmployeesRoutingModule } from './employees-routing.module';
-import { EmployeesApiService } from './services/employees-api.service';
+import { EmployeesCRUDApiService } from './services/employees-crud-api.service';
 import { EmployeesComponent } from './employees.component';
 import { EditEmployeeDialogComponent } from './dialogs/edit-employee-dialog/edit-employee-dialog.component';
 import { CreateEmployeeDialogComponent } from './dialogs/create-employee-dialog/create-employee-dialog.component';
@@ -20,7 +20,7 @@ import { SharedTableModule } from 'src/app/shared/table/shared-table.module';
     ],
     imports: [EmployeesRoutingModule, SharedTableModule],
     providers: [
-        EmployeesApiService,
+        EmployeesCRUDApiService,
         DialogService,
         ConfirmationService,
         EmployeeDialogService,

@@ -23,6 +23,7 @@
                     placeholder="Select start date"
                     dateFormat="dd-mm-yy"
                     appendTo="body"
+                    [disabledDates]="disabledDates"
                 ></p-calendar>
                 <div *ngIf="isFieldInvalid('start_date')">
                     <small
@@ -42,6 +43,7 @@
                     appendTo="body"
                     [minDate]="form.get('start_date')?.value"
                     [readonlyInput]="true"
+                    [disabledDates]="disabledDates"
                 ></p-calendar>
                 <div *ngIf="isFieldInvalid('end_date')">
                     <small

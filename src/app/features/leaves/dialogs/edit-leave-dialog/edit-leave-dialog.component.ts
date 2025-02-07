@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Leave } from 'src/app/interfaces/leave';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogAction } from 'src/app/enums/dialog-action.enum';
+import { UnavailableDatesApiService } from 'src/app/shared/unavailable-dates/unavailable-dates-api-service';
 
 @Component({
     selector: 'app-edit-leave-dialog',
@@ -14,9 +15,10 @@ export class EditLeaveDialogComponent extends BaseLeavesDialogComponent {
     constructor(
         public ref: DynamicDialogRef,
         public config: DynamicDialogConfig,
-        fb: FormBuilder
+        fb: FormBuilder,
+        unavailableDatesApiService: UnavailableDatesApiService
     ) {
-        super(fb);
+        super(fb, unavailableDatesApiService);
     }
     protected initializeData(): void {
         this.data = { ...this.config.data.item };

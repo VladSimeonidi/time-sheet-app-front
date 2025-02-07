@@ -5,20 +5,29 @@ import { Status } from 'src/app/enums/timesheet-status.enum';
 import { Employee } from 'src/app/interfaces/employee';
 import { TimeSheet } from 'src/app/interfaces/timesheet';
 import { BaseDialogComponent } from 'src/app/shared/base-table/base-components/base-dialog.component';
+import { UnavailableDatesApiService } from '../../../shared/unavailable-dates/unavailable-dates-api-service';
 
 @Directive()
 export abstract class BaseTimeSheetDialogComponent
     extends BaseDialogComponent<TimeSheet>
     implements OnDestroy
 {
+    private readonly START_HOUR_OFFSET = 9;
+    private readonly WORK_HOURS = 8;
+
     public timeSheetStatuses = [
         { field: Status.APPROVED, header: 'Approved' },
         { field: Status.DENIED, header: 'Denied' },
     ];
 
+    public disabledDates: Date[] = [];
+
     private destroy$ = new Subject<void>();
 
-    constructor(fb: FormBuilder) {
+    constructor(
+        fb: FormBuilder,
+        protected unavailableDatesApiService: UnavailableDatesApiService
+    ) {
         super(fb);
     }
 
@@ -34,7 +43,22 @@ export abstract class BaseTimeSheetDialogComponent
     }
 
     public onEmployeeSelected(employee: Employee): void {
-        this.form.get('employee')?.setValue(employee._id);
+        const employeeControl = this.form.get('employee');
+        if (employeeControl) {
+            employeeControl.setValue(employee._id);
+        }
+        this.unavailableDatesApiService
+            .getAllUnavailableDates(employee._id)
+            .subscribe({
+                next: (response) => {
+                    this.disabledDates = response.map(
+                        (dateStr) => new Date(dateStr)
+                    );
+                },
+
+                error: (err) =>
+                    console.error('Error fetching disabled dates:', err),
+            });
     }
 
     private setupFormListener(
@@ -59,7 +83,7 @@ export abstract class BaseTimeSheetDialogComponent
     private updateStartTime(date: Date) {
         if (date) {
             const startTime: Date = new Date(date);
-            startTime.setHours(startTime.getHours() + 9);
+            startTime.setHours(startTime.getHours() + this.START_HOUR_OFFSET);
             this.form
                 .get('start_time')
                 .setValue(startTime, { emitEvent: true });
@@ -69,9 +93,8 @@ export abstract class BaseTimeSheetDialogComponent
     private updateEndTime(startTime: Date) {
         if (startTime) {
             const initialTime: Date = new Date(startTime);
-            const statusInHours: number = 8;
 
-            initialTime.setHours(initialTime.getHours() + statusInHours);
+            initialTime.setHours(initialTime.getHours() + this.WORK_HOURS);
 
             this.form
                 .get('end_time')

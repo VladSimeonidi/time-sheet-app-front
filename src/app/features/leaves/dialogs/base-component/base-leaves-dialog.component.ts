@@ -6,12 +6,15 @@ import { Status } from 'src/app/enums/timesheet-status.enum';
 import { Employee } from 'src/app/interfaces/employee';
 import { Leave } from 'src/app/interfaces/leave';
 import { BaseDialogComponent } from 'src/app/shared/base-table/base-components/base-dialog.component';
+import { UnavailableDatesApiService } from 'src/app/shared/unavailable-dates/unavailable-dates-api-service';
 
 @Directive()
 export abstract class BaseLeavesDialogComponent
     extends BaseDialogComponent<Leave>
     implements OnDestroy
 {
+    public disabledDates: Date[] = [];
+
     public LeaveTypes = [
         { field: LeaveTypes.SICK, header: 'Sick Leave' },
         { field: LeaveTypes.ANNUAL, header: 'Annual Leave' },
@@ -29,7 +32,10 @@ export abstract class BaseLeavesDialogComponent
 
     private destroy$ = new Subject<void>();
 
-    constructor(fb: FormBuilder) {
+    constructor(
+        fb: FormBuilder,
+        protected unavailableDatesApiService: UnavailableDatesApiService
+    ) {
         super(fb);
     }
 
@@ -39,7 +45,22 @@ export abstract class BaseLeavesDialogComponent
     }
 
     public onEmployeeSelected(employee: Employee): void {
-        this.form.get('employee')?.setValue(employee._id);
+        const employeeControl = this.form.get('employee');
+        if (employeeControl) {
+            employeeControl.setValue(employee._id);
+        }
+        this.unavailableDatesApiService
+            .getAllUnavailableDates(employee._id)
+            .subscribe({
+                next: (response) => {
+                    this.disabledDates = response.map(
+                        (dateStr) => new Date(dateStr)
+                    );
+                },
+
+                error: (err) =>
+                    console.error('Error fetching disabled dates:', err),
+            });
     }
 
     protected initializeComponent(): void {

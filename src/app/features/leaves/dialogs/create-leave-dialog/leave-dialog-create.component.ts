@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Leave } from 'src/app/interfaces/leave';
 import { DialogAction } from 'src/app/enums/dialog-action.enum';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { UnavailableDatesApiService } from 'src/app/shared/unavailable-dates/unavailable-dates-api-service';
 
 @Component({
     selector: 'app-leave-dialog-create',
@@ -11,8 +12,12 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
     styleUrl: './leave-dialog-create.component.scss',
 })
 export class CreateLeaveDialogComponent extends BaseLeavesDialogComponent {
-    constructor(public ref: DynamicDialogRef, fb: FormBuilder) {
-        super(fb);
+    constructor(
+        public ref: DynamicDialogRef,
+        fb: FormBuilder,
+        unavailableDatesApiService: UnavailableDatesApiService
+    ) {
+        super(fb, unavailableDatesApiService);
     }
     protected initializeData(): void {
         this.data = {

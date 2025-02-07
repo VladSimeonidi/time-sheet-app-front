@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { TimeSheet } from 'src/app/interfaces/timesheet';
 import { DialogAction } from 'src/app/enums/dialog-action.enum';
+import { UnavailableDatesApiService } from '../../../../shared/unavailable-dates/unavailable-dates-api-service';
 
 @Component({
     selector: 'app-edit-timesheet-dialog',
@@ -12,11 +13,12 @@ import { DialogAction } from 'src/app/enums/dialog-action.enum';
 })
 export class EditTimeSheetDialogComponent extends BaseTimeSheetDialogComponent {
     constructor(
+        unavailableDatesApiService: UnavailableDatesApiService,
         public ref: DynamicDialogRef,
         public config: DynamicDialogConfig,
         fb: FormBuilder
     ) {
-        super(fb);
+        super(fb, unavailableDatesApiService);
     }
     protected initializeData(): void {
         this.data = { ...this.config.data.timesheet };

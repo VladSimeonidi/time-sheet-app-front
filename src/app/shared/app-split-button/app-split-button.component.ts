@@ -27,7 +27,6 @@ export class AppSplitButtonComponent {
                 this.emitAction('delete');
             },
         },
-        { label: 'Angular Website', url: 'http://angular.io' },
     ];
 
     constructor() {}

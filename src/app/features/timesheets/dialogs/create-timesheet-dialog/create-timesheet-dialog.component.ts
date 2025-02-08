@@ -22,9 +22,9 @@ export class CreateTimeSheetDialogComponent extends BaseTimeSheetDialogComponent
     protected initializeData(): void {
         this.data = {
             employee: '',
-            date: new Date(),
-            start_time: new Date(new Date().setHours(9, 0, 0, 0)),
-            end_time: new Date(new Date().setHours(17, 0, 0, 0)),
+            date: null,
+            start_time: null,
+            end_time: null,
             breaks: false,
             total_hours_worked: 0,
             timesheet_status: '',

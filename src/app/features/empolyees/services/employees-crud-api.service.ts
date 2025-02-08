@@ -5,7 +5,7 @@ import { BaseCRUDApiService } from 'src/app/shared/base-table/base-services/base
 
 @Injectable()
 export class EmployeesCRUDApiService extends BaseCRUDApiService<Employee> {
-    constructor(protected override http: HttpClient) {
+    constructor(http: HttpClient) {
         super(http, 'employees');
     }
 }

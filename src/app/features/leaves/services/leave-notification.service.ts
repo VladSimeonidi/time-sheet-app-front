@@ -4,7 +4,7 @@ import { BaseNotificationService } from 'src/app/shared/base-table/base-services
 
 @Injectable()
 export class LeaveNotificationService extends BaseNotificationService {
-    constructor(protected override messageService: MessageService) {
+    constructor(messageService: MessageService) {
         super(messageService, 'Leave');
     }
 }

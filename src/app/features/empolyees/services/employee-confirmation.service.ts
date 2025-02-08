@@ -4,7 +4,7 @@ import { BaseConfirmationService } from 'src/app/shared/base-table/base-services
 
 @Injectable()
 export class EmployeeConfirmationService extends BaseConfirmationService {
-    constructor(protected override confirmationService: ConfirmationService) {
+    constructor(confirmationService: ConfirmationService) {
         super(confirmationService);
     }
 }

@@ -20,7 +20,6 @@ export abstract class BaseTimeSheetDialogComponent
     public disabledDates: Date[] = [];
 
     private readonly START_HOUR_OFFSET = 9;
-    private readonly WORK_HOURS = 8;
 
     private destroy$ = new Subject<void>();
     private breaks: boolean = false;
@@ -95,9 +94,6 @@ export abstract class BaseTimeSheetDialogComponent
     private updateEndTime(startTime: Date) {
         if (startTime) {
             const initialTime: Date = new Date(startTime);
-
-            initialTime.setHours(initialTime.getHours() + this.WORK_HOURS);
-
             this.form
                 .get('end_time')
                 .setValue(initialTime, { emitEvent: true });

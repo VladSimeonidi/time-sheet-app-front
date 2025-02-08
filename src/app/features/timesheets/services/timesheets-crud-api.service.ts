@@ -5,7 +5,7 @@ import { BaseCRUDApiService } from 'src/app/shared/base-table/base-services/base
 
 @Injectable()
 export class TimeSheetsCRUDApiService extends BaseCRUDApiService<TimeSheet> {
-    constructor(protected override http: HttpClient) {
+    constructor(http: HttpClient) {
         super(http, 'timesheets');
     }
 }

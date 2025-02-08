@@ -10,9 +10,9 @@ import { EditTimeSheetDialogComponent } from '../dialogs/edit-timesheet-dialog/e
 @Injectable()
 export class TimeSheetsDialogService extends BaseDialogService<TimeSheet> {
     constructor(
-        protected override dialogService: DialogService,
-        protected override crudService: TimeSheetsCRUDApiService,
-        protected override notificationService: TimeSheetsNotificationService
+        dialogService: DialogService,
+        crudService: TimeSheetsCRUDApiService,
+        notificationService: TimeSheetsNotificationService
     ) {
         super(dialogService, crudService, notificationService, 'timesheet');
     }
@@ -29,10 +29,10 @@ export class TimeSheetsDialogService extends BaseDialogService<TimeSheet> {
         };
     }
 
-    protected override getEditDialogComponent() {
+    protected getEditDialogComponent() {
         return EditTimeSheetDialogComponent;
     }
-    protected override getEditDialogConfig(timesheet: TimeSheet) {
+    protected getEditDialogConfig(timesheet: TimeSheet) {
         return {
             header: 'Edit Time Sheet',
             width: '50%',

@@ -64,7 +64,7 @@ export class CreateEmployeeDialogComponent extends BaseEmployeeDialogComponent {
 
     protected initializeData(): void {}
 
-    protected override buildForm(): FormGroup {
+    protected buildForm(): FormGroup {
         return (this.form = this.fb.group(
             this.fields.reduce((controls, field) => {
                 controls[field.name] = ['', field.validators];

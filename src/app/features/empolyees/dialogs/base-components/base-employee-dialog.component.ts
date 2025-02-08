@@ -17,7 +17,7 @@ export abstract class BaseEmployeeDialogComponent extends BaseDialogComponent<Em
         { label: 'Part-time', value: 'part-time' },
     ];
 
-    constructor(protected override fb: FormBuilder) {
+    constructor(fb: FormBuilder) {
         super(fb);
     }
 

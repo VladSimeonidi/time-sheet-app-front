@@ -10,9 +10,9 @@ import { EmployeeNotificationService } from './employee-notification.service';
 @Injectable()
 export class EmployeeDialogService extends BaseDialogService<Employee> {
     constructor(
-        protected override dialogService: DialogService,
-        protected override crudService: EmployeesCRUDApiService,
-        protected override notificationService: EmployeeNotificationService
+        dialogService: DialogService,
+        crudService: EmployeesCRUDApiService,
+        notificationService: EmployeeNotificationService
     ) {
         super(dialogService, crudService, notificationService, 'employee');
     }

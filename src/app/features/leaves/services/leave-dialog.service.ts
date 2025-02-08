@@ -12,27 +12,27 @@ import { EditLeaveDialogComponent } from '../dialogs/edit-leave-dialog/edit-leav
 })
 export class LeaveDialogService extends BaseDialogService<Leave> {
     constructor(
-        protected override dialogService: DialogService,
-        protected override crudService: LeaveCRUDApiService,
-        protected override notificationService: LeaveNotificationService
+        dialogService: DialogService,
+        crudService: LeaveCRUDApiService,
+        notificationService: LeaveNotificationService
     ) {
         super(dialogService, crudService, notificationService, 'leave');
     }
 
-    protected override getCreateDialogComponent() {
+    protected getCreateDialogComponent() {
         return CreateLeaveDialogComponent;
     }
-    protected override getCreateDialogConfig() {
+    protected getCreateDialogConfig() {
         return {
             header: 'Create Leave',
             width: '50%',
             closeOnEscape: true,
         };
     }
-    protected override getEditDialogComponent() {
+    protected getEditDialogComponent() {
         return EditLeaveDialogComponent;
     }
-    protected override getEditDialogConfig(item: Leave) {
+    protected getEditDialogConfig(item: Leave) {
         return {
             header: 'Edit Leave',
             width: '50%',

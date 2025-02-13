@@ -22,8 +22,8 @@ export class CreateLeaveDialogComponent extends BaseLeavesDialogComponent {
     protected initializeData(): void {
         this.data = {
             employee: '',
-            start_date: new Date(),
-            end_date: new Date(),
+            start_date: null,
+            end_date: null,
             status: '',
             leave_type: '',
         };

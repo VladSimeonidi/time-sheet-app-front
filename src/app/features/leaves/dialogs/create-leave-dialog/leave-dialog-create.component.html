@@ -64,17 +64,22 @@
                         optionValue="field"
                         placeholder="Select Status"
                         appendTo="body"
+                        [ngClass]="{
+                            'ng-invalid ng-dirty': isFieldInvalid('status')
+                        }"
                     >
                     </p-dropdown>
                 </div>
 
-                <div *ngIf="isFieldInvalid('status')">
-                    <small
-                        class="p-error"
-                        *ngIf="form.get('status').errors?.required"
-                    >
-                        Status selection is required.
-                    </small>
+                <div class="error-message">
+                    <ng-container *ngIf="isFieldInvalid('status')">
+                        <small
+                            class="p-error"
+                            *ngIf="form.get('status').errors?.required"
+                        >
+                            Status selection is required.
+                        </small>
+                    </ng-container>
                 </div>
             </div>
 
@@ -88,17 +93,22 @@
                         optionValue="field"
                         placeholder="Select Leave Type"
                         appendTo="body"
+                        [ngClass]="{
+                            'ng-invalid ng-dirty': isFieldInvalid('leave_type')
+                        }"
                     >
                     </p-dropdown>
                 </div>
 
-                <div *ngIf="isFieldInvalid('leave_type')">
-                    <small
-                        class="p-error"
-                        *ngIf="form.get('leave_type').errors?.required"
-                    >
-                        Leave Type selection is required.
-                    </small>
+                <div class="error-message">
+                    <ng-container *ngIf="isFieldInvalid('leave_type')">
+                        <small
+                            class="p-error"
+                            *ngIf="form.get('leave_type').errors?.required"
+                        >
+                            Leave Type selection is required.
+                        </small>
+                    </ng-container>
                 </div>
             </div>
         </div>

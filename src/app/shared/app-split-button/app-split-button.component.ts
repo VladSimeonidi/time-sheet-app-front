@@ -31,8 +31,8 @@ export class AppSplitButtonComponent {
 
     constructor() {}
 
-    public redirectToDetails() {
-        this.emitAction('showDetails');
+    public emitClickedAction() {
+        this.emitAction('splitButtonAction');
     }
 
     public emitAction(action: string) {

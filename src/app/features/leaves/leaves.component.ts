@@ -7,6 +7,7 @@ import { LeavePaginationService } from './services/leave-pagination.service';
 import { LeaveNotificationService } from './services/leave-notification.service';
 import { BaseCrudTableComponent } from 'src/app/shared/base-table/base-components/base-crud-table.component';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-leaves',
@@ -57,14 +58,16 @@ export class LeavesComponent extends BaseCrudTableComponent<Leave> {
         crudService: LeaveCRUDApiService,
         paginationService: LeavePaginationService,
         notificationService: LeaveNotificationService,
-        private datePipe: DatePipe
+        private datePipe: DatePipe,
+        router: Router
     ) {
         super(
             dialogService,
             crudService,
             paginationService,
             notificationService,
-            confirmationService
+            confirmationService,
+            router
         );
     }
 

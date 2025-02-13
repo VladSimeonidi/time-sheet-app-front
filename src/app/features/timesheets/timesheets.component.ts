@@ -7,6 +7,7 @@ import { TimeSheetsNotificationService } from './services/timesheets-notificatio
 import { TimeSheetsDialogService } from './services/timesheets-dialog.service';
 import { TimeSheetsCRUDApiService } from './services/timesheets-crud-api.service';
 import { BaseCrudTableComponent } from 'src/app/shared/base-table/base-components/base-crud-table.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-timesheet',
@@ -30,14 +31,16 @@ export class TimeSheetsComponent extends BaseCrudTableComponent<TimeSheet> {
         dialogService: TimeSheetsDialogService,
         crudService: TimeSheetsCRUDApiService,
         paginationService: TimeSheetPaginationService,
-        notificationService: TimeSheetsNotificationService
+        notificationService: TimeSheetsNotificationService,
+        router: Router
     ) {
         super(
             dialogService,
             crudService,
             paginationService,
             notificationService,
-            confirmationService
+            confirmationService,
+            router
         );
     }
 }

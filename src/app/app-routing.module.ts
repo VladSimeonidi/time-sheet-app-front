@@ -42,7 +42,7 @@ import { AppLayoutComponent } from './core/layout/app.layout.component';
                         ),
                 },
                 { path: 'notfound', component: NotfoundComponent },
-                { path: '**', redirectTo: '/notfound' },
+                // { path: '**', redirectTo: '/notfound' },
             ],
             {
                 scrollPositionRestoration: 'enabled',

@@ -11,12 +11,14 @@ import { EmployeePaginationService } from './services/employee-pagination.servic
 import { EmployeeNotificationService } from './services/employee-notification.service';
 import { EmployeeConfirmationService } from './services/employee-confirmation.service';
 import { SharedTableModule } from 'src/app/shared/table/shared-table.module';
+import { EmployeeSummaryComponent } from './employee-summary/employee-summary.component';
 
 @NgModule({
     declarations: [
         EmployeesComponent,
         EditEmployeeDialogComponent,
         CreateEmployeeDialogComponent,
+        EmployeeSummaryComponent,
     ],
     imports: [EmployeesRoutingModule, SharedTableModule],
     providers: [

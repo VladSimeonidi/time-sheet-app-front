@@ -15,7 +15,6 @@ import {
     EMPTY,
 } from 'rxjs';
 import { DialogAction } from 'src/app/enums/dialog-action.enum';
-import { Router } from '@angular/router';
 
 @Directive()
 export abstract class BaseCrudTableComponent<T>
@@ -28,8 +27,7 @@ export abstract class BaseCrudTableComponent<T>
         crudService: BaseCRUDApiService<T>,
         paginationService: BasePaginationService,
         notificationService: BaseNotificationService,
-        protected confirmationService: BaseConfirmationService,
-        private router: Router
+        protected confirmationService: BaseConfirmationService
     ) {
         super(crudService, paginationService, notificationService);
     }
@@ -44,13 +42,6 @@ export abstract class BaseCrudTableComponent<T>
         data: Partial<T> & { _id: string };
     }) {
         const { action, data } = args;
-
-        if (action === 'splitButtonAction') {
-            this.router.navigate([
-                'features/employees/employee-summary',
-                data._id,
-            ]);
-        }
 
         if (action === DialogAction.EDIT) {
             this.openDialog(DialogAction.EDIT, data);

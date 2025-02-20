@@ -16,12 +16,6 @@ export class AppSplitButtonComponent {
 
     items: MenuItem[] = [
         {
-            label: 'Edit',
-            command: () => {
-                this.emitAction('edit');
-            },
-        },
-        {
             label: 'Delete',
             command: () => {
                 this.emitAction('delete');
@@ -32,7 +26,7 @@ export class AppSplitButtonComponent {
     constructor() {}
 
     public emitClickedAction() {
-        this.emitAction('splitButtonAction');
+        this.emitAction('edit');
     }
 
     public emitAction(action: string) {

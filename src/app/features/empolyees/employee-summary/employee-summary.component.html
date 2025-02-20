@@ -1,6 +1,52 @@
 <div class="grid">
     <div class="col-12">
         <h1 class="text-primary">Employee Summary</h1>
-        <div class="card"></div>
+        <div class="card">
+            <div class="table-container">
+                <div *ngFor="let week of weeklySummary">
+                    <h3>Week: {{ week.weekStart }} - {{ week.weekEnd }}</h3>
+
+                    <p-table
+                        styleClass="p-datatable-gridlines"
+                        [value]="week.days"
+                        responsiveLayout="scroll"
+                    >
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Day</th>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Total Hours</th>
+                                <th>Leave Type</th>
+                                <th>Status</th>
+                            </tr>
+                        </ng-template>
+
+                        <ng-template pTemplate="body" let-day>
+                            <tr>
+                                <td>{{ day.day_of_week }}</td>
+                                <td>{{ day.date | date : "dd-MM-yyyy" }}</td>
+                                <td>{{ day.type }}</td>
+                                <td>
+                                    {{ day.start_time | date : "shortTime" }}
+                                </td>
+                                <td>
+                                    {{ day.end_time | date : "shortTime" }}
+                                </td>
+                                <td>
+                                    {{ day.total_hours }}
+                                </td>
+                                <td>
+                                    {{ day.leave_type }}
+                                </td>
+                                <td>{{ day.status }}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -12,6 +12,7 @@ import { EmployeeNotificationService } from './services/employee-notification.se
 import { EmployeeConfirmationService } from './services/employee-confirmation.service';
 import { SharedTableModule } from 'src/app/shared/table/shared-table.module';
 import { EmployeeSummaryComponent } from './employee-summary/employee-summary.component';
+import { EmployeeSummaryCrudService } from './services/employee-summary-crud.service';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import { EmployeeSummaryComponent } from './employee-summary/employee-summary.co
         EmployeePaginationService,
         EmployeeNotificationService,
         EmployeeConfirmationService,
+        EmployeeSummaryCrudService,
     ],
 })
 export class EmployeesModule {}

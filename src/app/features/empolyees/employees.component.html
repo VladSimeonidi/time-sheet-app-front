@@ -37,7 +37,13 @@
 
                 <ng-template pTemplate="body" let-rowData>
                     <tr>
-                        <td></td>
+                        <td>
+                            <p-button
+                                (click)="getEmployeeSummary(rowData)"
+                                [rounded]="true"
+                                icon="pi pi-calendar-times"
+                            ></p-button>
+                        </td>
                         <td *ngFor="let col of columns">
                             {{ rowData[col.field] }}
                         </td>

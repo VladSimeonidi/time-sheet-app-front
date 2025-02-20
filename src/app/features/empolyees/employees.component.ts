@@ -29,15 +29,21 @@ export class EmployeesComponent extends BaseCrudTableComponent<Employee> {
         crudService: EmployeesCRUDApiService,
         paginationService: EmployeePaginationService,
         notificationService: EmployeeNotificationService,
-        router: Router
+        private router: Router
     ) {
         super(
             dialogService,
             crudService,
             paginationService,
             notificationService,
-            confirmationService,
-            router
+            confirmationService
         );
+    }
+
+    public getEmployeeSummary(employee: Employee) {
+        this.router.navigate([
+            'features/employees/employee-summary',
+            employee._id,
+        ]);
     }
 }

@@ -1,7 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SummaryEmployee } from 'src/app/interfaces/employee-summary';
+import { Employee } from 'src/app/interfaces/employee';
+import {
+    EmployeeSummaryResponse,
+    SummaryEmployee,
+} from 'src/app/interfaces/employee-summary';
 
 @Injectable()
 export class EmployeeSummaryCrudService {
@@ -12,15 +16,15 @@ export class EmployeeSummaryCrudService {
     getSummary(
         employeeId: string,
         range: { startDate: string; endDate: string }
-    ): Observable<{ id: string; weeklySummary: SummaryEmployee[] }> {
+    ): Observable<EmployeeSummaryResponse> {
         let params = new HttpParams();
 
         if (range.startDate) params = params.set('startDate', range.startDate);
         if (range.endDate) params = params.set('endDate', range.endDate);
 
-        return this.http.get<{ id: string; weeklySummary: SummaryEmployee[] }>(
-            `${this.apiUrl}/${employeeId}`,
-            { params }
-        );
+        return this.http.get<{
+            employee: Employee;
+            weeklySummary: SummaryEmployee[];
+        }>(`${this.apiUrl}/${employeeId}`, { params });
     }
 }

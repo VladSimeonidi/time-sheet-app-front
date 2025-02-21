@@ -1,3 +1,5 @@
+import { Employee } from './employee';
+
 export interface SummaryEmployee {
     date: Date;
     day_of_week: string;
@@ -7,4 +9,9 @@ export interface SummaryEmployee {
     total_hours?: number | null;
     status: string | null;
     leave_type?: string | null;
+}
+
+export interface EmployeeSummaryResponse {
+    weeklySummary: SummaryEmployee[];
+    employee: Employee;
 }

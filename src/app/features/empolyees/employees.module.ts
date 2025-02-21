@@ -13,6 +13,7 @@ import { EmployeeConfirmationService } from './services/employee-confirmation.se
 import { SharedTableModule } from 'src/app/shared/table/shared-table.module';
 import { EmployeeSummaryComponent } from './employee-summary/employee-summary.component';
 import { EmployeeSummaryCrudService } from './services/employee-summary-crud.service';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,7 @@ import { EmployeeSummaryCrudService } from './services/employee-summary-crud.ser
         CreateEmployeeDialogComponent,
         EmployeeSummaryComponent,
     ],
-    imports: [EmployeesRoutingModule, SharedTableModule],
+    imports: [EmployeesRoutingModule, SharedTableModule, CalendarModule],
     providers: [
         EmployeesCRUDApiService,
         DialogService,

@@ -1,14 +1,27 @@
 import { Component } from '@angular/core';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Employee } from 'src/app/interfaces/employee';
 import { DialogAction } from 'src/app/enums/dialog-action.enum';
 import { BaseEmployeeDialogComponent } from '../base-components/base-employee-dialog.component';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { NgIf } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
     selector: 'app-edit-employee-dialog',
     templateUrl: './edit-employee-dialog.component.html',
     styleUrl: './edit-employee-dialog.component.scss',
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        NgIf,
+        DropdownModule,
+        ButtonModule,
+    ],
 })
 export class EditEmployeeDialogComponent extends BaseEmployeeDialogComponent {
     constructor(

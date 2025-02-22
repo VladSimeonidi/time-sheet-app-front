@@ -1,14 +1,35 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogAction } from 'src/app/enums/dialog-action.enum';
 import { BaseTimeSheetDialogComponent } from '../../base-components/base-timesheet-dialog.component';
 import { UnavailableDatesApiService } from '../../../../shared/unavailable-dates/unavailable-dates-api-service';
+import { ButtonModule } from 'primeng/button';
+import { SharedModule } from 'primeng/api';
+import { CheckboxModule } from 'primeng/checkbox';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { CalendarModule } from 'primeng/calendar';
+import { NgIf } from '@angular/common';
+import { EmployeeSelectComponent } from '../../../../shared/employee-select/employee-select/employee-select.component';
 
 @Component({
     selector: 'app-create-timesheet-dialog',
     templateUrl: './create-timesheet-dialog.component.html',
     styleUrl: './create-timesheet-dialog.component.scss',
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        EmployeeSelectComponent,
+        NgIf,
+        CalendarModule,
+        InputTextModule,
+        DropdownModule,
+        CheckboxModule,
+        SharedModule,
+        ButtonModule,
+    ],
 })
 export class CreateTimeSheetDialogComponent extends BaseTimeSheetDialogComponent {
     constructor(

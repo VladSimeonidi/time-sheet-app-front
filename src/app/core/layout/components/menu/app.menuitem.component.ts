@@ -6,7 +6,7 @@ import {
     OnDestroy,
     OnInit,
 } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterLinkActive, RouterLink } from '@angular/router';
 import {
     animate,
     state,
@@ -18,6 +18,8 @@ import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { MenuService } from './app.menu.service';
 import { LayoutService } from '../../service/app.layout.service';
+import { RippleModule } from 'primeng/ripple';
+import { NgIf, NgClass, NgFor } from '@angular/common';
 
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
@@ -104,23 +106,23 @@ import { LayoutService } from '../../service/app.layout.service';
     `,
     animations: [
         trigger('children', [
-            state(
-                'collapsed',
-                style({
-                    height: '0',
-                })
-            ),
-            state(
-                'expanded',
-                style({
-                    height: '*',
-                })
-            ),
-            transition(
-                'collapsed <=> expanded',
-                animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')
-            ),
+            state('collapsed', style({
+                height: '0',
+            })),
+            state('expanded', style({
+                height: '*',
+            })),
+            transition('collapsed <=> expanded', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
         ]),
+    ],
+    standalone: true,
+    imports: [
+        NgIf,
+        RippleModule,
+        NgClass,
+        RouterLinkActive,
+        RouterLink,
+        NgFor,
     ],
 })
 export class AppMenuitemComponent implements OnInit, OnDestroy {

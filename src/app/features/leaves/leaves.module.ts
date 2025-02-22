@@ -6,7 +6,7 @@ import { LeaveNotificationService } from './services/leave-notification.service'
 import { LeavePaginationService } from './services/leave-pagination.service';
 import { LeaveCRUDApiService } from './services/leave-crud-api.service';
 import { LeaveDialogService } from './services/leave-dialog.service';
-import { SharedTableModule } from 'src/app/shared/table/shared-table.module';
+
 import { ConfirmationService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { CreateLeaveDialogComponent } from './dialogs/create-leave-dialog/leave-dialog-create.component';
@@ -17,17 +17,14 @@ import { DatePipe } from '@angular/common';
 import { UnavailableDatesApiService } from 'src/app/shared/unavailable-dates/unavailable-dates-api-service';
 
 @NgModule({
-    declarations: [
-        LeavesComponent,
-        CreateLeaveDialogComponent,
-        EditLeaveDialogComponent,
-    ],
     imports: [
-        SharedTableModule,
-        LeavesRoutingModule,
-        EmployeeSelectModule,
-        CalendarModule,
-    ],
+    LeavesRoutingModule,
+    EmployeeSelectModule,
+    CalendarModule,
+    LeavesComponent,
+    CreateLeaveDialogComponent,
+    EditLeaveDialogComponent,
+],
     providers: [
         LeaveConfirmationService,
         LeaveNotificationService,

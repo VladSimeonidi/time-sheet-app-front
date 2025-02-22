@@ -4,6 +4,7 @@ import { Subscription, debounceTime } from 'rxjs';
 
 @Component({
     templateUrl: './dashboard.component.html',
+    standalone: true,
 })
 export class DashboardComponent {
     items!: MenuItem[];

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { TimeSheetRoutingModule } from './timesheets-routing.module';
-import { SharedTableModule } from 'src/app/shared/table/shared-table.module';
+
 import { CreateTimeSheetDialogComponent } from './dialogs/create-timesheet-dialog/create-timesheet-dialog.component';
 import { TimeSheetsComponent } from './timesheets.component';
 import { TimeSheetsCRUDApiService } from './services/timesheets-crud-api.service';
@@ -17,18 +17,15 @@ import { EditTimeSheetDialogComponent } from './dialogs/edit-timesheet-dialog/ed
 import { UnavailableDatesApiService } from '../../shared/unavailable-dates/unavailable-dates-api-service';
 
 @NgModule({
-    declarations: [
-        CreateTimeSheetDialogComponent,
-        EditTimeSheetDialogComponent,
-        TimeSheetsComponent,
-    ],
     imports: [
-        SharedTableModule,
-        TimeSheetRoutingModule,
-        EmployeeSelectModule,
-        CalendarModule,
-        CheckboxModule,
-    ],
+    TimeSheetRoutingModule,
+    EmployeeSelectModule,
+    CalendarModule,
+    CheckboxModule,
+    CreateTimeSheetDialogComponent,
+    EditTimeSheetDialogComponent,
+    TimeSheetsComponent,
+],
     providers: [
         TimeSheetsCRUDApiService,
         UnavailableDatesApiService,

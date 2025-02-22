@@ -7,11 +7,28 @@ import { EmployeeNotificationService } from './services/employee-notification.se
 import { EmployeeConfirmationService } from './services/employee-confirmation.service';
 import { BaseCrudTableComponent } from 'src/app/shared/base-table/base-components/base-crud-table.component';
 import { Router } from '@angular/router';
+import { AppSplitButtonComponent } from '../../shared/app-split-button/app-split-button.component';
+import { NgFor } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+import { SharedModule } from 'primeng/api';
+import { TableModule } from 'primeng/table';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
     selector: 'app-employees',
     templateUrl: './employees.component.html',
     styleUrl: './employees.component.scss',
+    standalone: true,
+    imports: [
+        ToastModule,
+        ConfirmDialogModule,
+        TableModule,
+        SharedModule,
+        ButtonModule,
+        NgFor,
+        AppSplitButtonComponent,
+    ],
 })
 export class EmployeesComponent extends BaseCrudTableComponent<Employee> {
     public columns = [

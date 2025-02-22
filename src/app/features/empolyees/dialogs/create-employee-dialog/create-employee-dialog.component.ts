@@ -1,14 +1,32 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogAction } from 'src/app/enums/dialog-action.enum';
 import { Employee } from 'src/app/interfaces/employee';
 import { BaseEmployeeDialogComponent } from '../base-components/base-employee-dialog.component';
+import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { NgFor, NgSwitch, NgSwitchCase, NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-create-employee-dialog',
     templateUrl: './create-employee-dialog.component.html',
     styleUrl: './create-employee-dialog.component.scss',
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgFor,
+        NgSwitch,
+        NgSwitchCase,
+        InputTextModule,
+        DropdownModule,
+        CalendarModule,
+        NgIf,
+        ButtonModule,
+    ],
 })
 export class CreateEmployeeDialogComponent extends BaseEmployeeDialogComponent {
     public fields = [

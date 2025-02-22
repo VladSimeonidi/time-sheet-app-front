@@ -6,12 +6,28 @@ import { LeaveCRUDApiService } from './services/leave-crud-api.service';
 import { LeavePaginationService } from './services/leave-pagination.service';
 import { LeaveNotificationService } from './services/leave-notification.service';
 import { BaseCrudTableComponent } from 'src/app/shared/base-table/base-components/base-crud-table.component';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgFor } from '@angular/common';
+import { AppSplitButtonComponent } from '../../shared/app-split-button/app-split-button.component';
+import { ButtonModule } from 'primeng/button';
+import { SharedModule } from 'primeng/api';
+import { TableModule } from 'primeng/table';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
     selector: 'app-leaves',
     templateUrl: './leaves.component.html',
     styleUrl: './leaves.component.scss',
+    standalone: true,
+    imports: [
+        ToastModule,
+        ConfirmDialogModule,
+        TableModule,
+        SharedModule,
+        ButtonModule,
+        NgFor,
+        AppSplitButtonComponent,
+    ],
 })
 export class LeavesComponent extends BaseCrudTableComponent<Leave> {
     public columns = [

@@ -10,19 +10,16 @@ import { EmployeeDialogService } from './services/employees-dialog.service';
 import { EmployeePaginationService } from './services/employee-pagination.service';
 import { EmployeeNotificationService } from './services/employee-notification.service';
 import { EmployeeConfirmationService } from './services/employee-confirmation.service';
-import { SharedTableModule } from 'src/app/shared/table/shared-table.module';
+
 import { EmployeeSummaryComponent } from './employee-summary/employee-summary.component';
 import { EmployeeSummaryCrudService } from './services/employee-summary-crud.service';
 import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
-    declarations: [
-        EmployeesComponent,
-        EditEmployeeDialogComponent,
-        CreateEmployeeDialogComponent,
-        EmployeeSummaryComponent,
-    ],
-    imports: [EmployeesRoutingModule, SharedTableModule, CalendarModule],
+    imports: [EmployeesRoutingModule, CalendarModule, EmployeesComponent,
+    EditEmployeeDialogComponent,
+    CreateEmployeeDialogComponent,
+    EmployeeSummaryComponent],
     providers: [
         EmployeesCRUDApiService,
         DialogService,

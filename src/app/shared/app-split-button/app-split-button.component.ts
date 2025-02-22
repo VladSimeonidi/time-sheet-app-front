@@ -1,11 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Employee } from 'src/app/interfaces/employee';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 @Component({
     selector: 'app-split-button',
     templateUrl: './app-split-button.component.html',
     styleUrl: './app-split-button.component.scss',
+    standalone: true,
+    imports: [SplitButtonModule],
 })
 export class AppSplitButtonComponent {
     @Input() rowData: Partial<Employee>;

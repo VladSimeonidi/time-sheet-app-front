@@ -8,13 +8,13 @@ import { FormsModule } from '@angular/forms';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
-    declarations: [EmployeeSelectComponent],
     imports: [
         CommonModule,
         DropdownModule,
         HttpClientModule,
         FormsModule,
         ProgressSpinnerModule,
+        EmployeeSelectComponent,
     ],
     exports: [EmployeeSelectComponent],
     providers: [EmployeeSelectApiService],

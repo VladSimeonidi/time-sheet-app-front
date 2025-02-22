@@ -1,15 +1,32 @@
 import { Component } from '@angular/core';
 import { BaseLeavesDialogComponent } from '../base-component/base-leaves-dialog.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Leave } from 'src/app/interfaces/leave';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogAction } from 'src/app/enums/dialog-action.enum';
 import { UnavailableDatesApiService } from 'src/app/shared/unavailable-dates/unavailable-dates-api-service';
+import { ButtonModule } from 'primeng/button';
+import { SharedModule } from 'primeng/api';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { NgIf } from '@angular/common';
+import { EmployeeSelectComponent } from '../../../../shared/employee-select/employee-select/employee-select.component';
 
 @Component({
     selector: 'app-edit-leave-dialog',
     templateUrl: './edit-leave-dialog.component.html',
     styleUrl: './edit-leave-dialog.component.scss',
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        EmployeeSelectComponent,
+        NgIf,
+        CalendarModule,
+        DropdownModule,
+        SharedModule,
+        ButtonModule,
+    ],
 })
 export class EditLeaveDialogComponent extends BaseLeavesDialogComponent {
     constructor(

@@ -7,11 +7,29 @@ import { TimeSheetsNotificationService } from './services/timesheets-notificatio
 import { TimeSheetsDialogService } from './services/timesheets-dialog.service';
 import { TimeSheetsCRUDApiService } from './services/timesheets-crud-api.service';
 import { BaseCrudTableComponent } from 'src/app/shared/base-table/base-components/base-crud-table.component';
+import { AppSplitButtonComponent } from '../../shared/app-split-button/app-split-button.component';
+import { NgFor, DatePipe } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+import { SharedModule } from 'primeng/api';
+import { TableModule } from 'primeng/table';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
     selector: 'app-timesheet',
     templateUrl: './timesheets.component.html',
     styleUrl: './timesheets.component.scss',
+    standalone: true,
+    imports: [
+        ToastModule,
+        ConfirmDialogModule,
+        TableModule,
+        SharedModule,
+        ButtonModule,
+        NgFor,
+        AppSplitButtonComponent,
+        DatePipe,
+    ],
 })
 export class TimeSheetsComponent extends BaseCrudTableComponent<TimeSheet> {
     public columns = [

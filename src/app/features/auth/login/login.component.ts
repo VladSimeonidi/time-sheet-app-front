@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 import { LayoutService } from 'src/app/core/layout/service/app.layout.service';
+import { RouterLink } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
+import { FormsModule } from '@angular/forms';
+import { PasswordModule } from 'primeng/password';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
     selector: 'app-login',
@@ -13,6 +19,15 @@ import { LayoutService } from 'src/app/core/layout/service/app.layout.service';
                 color: var(--primary-color) !important;
             }
         `,
+    ],
+    standalone: true,
+    imports: [
+        InputTextModule,
+        PasswordModule,
+        FormsModule,
+        CheckboxModule,
+        ButtonModule,
+        RouterLink,
     ],
 })
 export class LoginComponent {

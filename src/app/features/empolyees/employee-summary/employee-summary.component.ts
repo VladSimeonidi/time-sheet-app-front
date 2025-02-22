@@ -6,6 +6,11 @@ import {
     SummaryEmployee,
 } from 'src/app/interfaces/employee-summary';
 import { Employee } from 'src/app/interfaces/employee';
+import { SharedModule } from 'primeng/api';
+import { TableModule } from 'primeng/table';
+import { NgFor, DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { CalendarModule } from 'primeng/calendar';
 
 interface Column {
     field: string;
@@ -15,6 +20,15 @@ interface Column {
     selector: 'app-employee-summary',
     templateUrl: './employee-summary.component.html',
     styleUrl: './employee-summary.component.scss',
+    standalone: true,
+    imports: [
+        CalendarModule,
+        FormsModule,
+        NgFor,
+        TableModule,
+        SharedModule,
+        DatePipe,
+    ],
 })
 export class EmployeeSummaryComponent implements OnInit {
     public dateRange: {

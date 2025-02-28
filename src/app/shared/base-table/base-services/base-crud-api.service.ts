@@ -14,11 +14,22 @@ export abstract class BaseCRUDApiService<T> {
 
     getPaginated(
         pageNumber: number,
-        pageSize: number
+        pageSize: number,
+        queryParams?: {
+            [key: string]: string | number | boolean;
+        }
     ): Observable<{ items: T[]; totalRecords: number }> {
-        const params = new HttpParams()
+        let params = new HttpParams()
             .set('pageNumber', pageNumber.toString())
             .set('pageSize', pageSize.toString());
+
+        if (queryParams) {
+            for (const key in queryParams) {
+                if (queryParams.hasOwnProperty(key)) {
+                    params = params.set(key, queryParams[key].toString());
+                }
+            }
+        }
 
         return this.http.get<{ items: T[]; totalRecords: number }>(
             `${this.apiUrl}/paginated`,

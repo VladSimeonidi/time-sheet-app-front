@@ -12,6 +12,10 @@ export abstract class BaseTableComponent<T> {
     public rowsPerPage = 5;
     public loading = true;
 
+    protected queryParams: {
+        [key: string]: string | number | boolean;
+    };
+
     constructor(
         protected crudService: BaseCRUDApiService<T>,
         protected paginationService: BasePaginationService,
@@ -23,7 +27,7 @@ export abstract class BaseTableComponent<T> {
             this.paginationService.calculatePagination(event);
 
         this.crudService
-            .getPaginated(pageNumber, pageSize)
+            .getPaginated(pageNumber, pageSize, this.queryParams)
             .pipe(
                 tap((data) => this.setItems(data)),
                 catchError((error) => {

@@ -7,6 +7,7 @@ import { TimeSheetsNotificationService } from './services/timesheets-notificatio
 import { TimeSheetsDialogService } from './services/timesheets-dialog.service';
 import { TimeSheetsCRUDApiService } from './services/timesheets-crud-api.service';
 import { BaseCrudTableComponent } from 'src/app/shared/base-table/base-components/base-crud-table.component';
+import { Employee } from 'src/app/interfaces/employee';
 
 @Component({
     selector: 'app-timesheet',
@@ -39,5 +40,11 @@ export class TimeSheetsComponent extends BaseCrudTableComponent<TimeSheet> {
             notificationService,
             confirmationService
         );
+    }
+
+    public onEmployeeSelected($event: Employee) {
+        this.queryParams = { employeeId: $event._id };
+        const lastEvent = this.paginationService.getLastPaginationEvent();
+        this.loadItems(lastEvent);
     }
 }

@@ -17,21 +17,21 @@ export class LeavesComponent extends BaseCrudTableComponent<Leave> {
     public columns = [
         {
             field: 'firstname',
-            header: 'First Name',
+            header: 'FIRST_NAME',
             resolver: (rowData: any) => rowData.employee?.firstname,
         },
         {
             field: 'surname',
-            header: 'Surname',
+            header: 'SURNAME',
             resolver: (rowData: any) => rowData.employee?.surname,
         },
         {
             field: 'leave_type',
-            header: 'Leave Type',
+            header: 'LEAVE_TYPE',
         },
         {
             field: 'start_date',
-            header: 'Start Date',
+            header: 'START_DATE',
             resolver: (rowData: any) =>
                 rowData.start_date
                     ? this.datePipe.transform(rowData.start_date, 'dd/MM/yyyy')
@@ -39,7 +39,7 @@ export class LeavesComponent extends BaseCrudTableComponent<Leave> {
         },
         {
             field: 'end_date',
-            header: 'End Date',
+            header: 'END_DATE',
             resolver: (rowData: any) =>
                 rowData.end_date
                     ? this.datePipe.transform(rowData.end_date, 'dd/MM/yyyy')
@@ -47,7 +47,7 @@ export class LeavesComponent extends BaseCrudTableComponent<Leave> {
         },
         {
             field: 'status',
-            header: 'Status',
+            header: 'STATUS',
         },
     ];
 

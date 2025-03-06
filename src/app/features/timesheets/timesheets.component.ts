@@ -16,15 +16,15 @@ import { Employee } from 'src/app/interfaces/employee';
 })
 export class TimeSheetsComponent extends BaseCrudTableComponent<TimeSheet> {
     public columns = [
-        { field: '', header: 'First Name' },
-        { field: '', header: 'Surname' },
-        { field: 'date', header: 'Date' },
-        { field: 'start_time', header: 'Start Time' },
-        { field: 'end_time', header: 'End Time' },
-        { field: 'breaks', header: 'Breaks' },
-        { field: 'total_hours_worked', header: 'Total Hours Worked' },
-        { field: 'timesheet_status', header: 'Timesheet Status' },
-        { field: '', header: 'Delete' },
+        { field: '', header: 'FIRST_NAME' },
+        { field: '', header: 'SURNAME' },
+        { field: 'date', header: 'DATE' },
+        { field: 'start_time', header: 'START_TIME' },
+        { field: 'end_time', header: 'END_TIME' },
+        { field: 'breaks', header: 'BREAKS' },
+        { field: 'total_hours_worked', header: 'TOTAL_HOURS_WORKED' },
+        { field: 'timesheet_status', header: 'TIMESHEET_STATUS' },
+        { field: '', header: 'ACTIONS' },
     ];
     constructor(
         confirmationService: TimeSheetsConfirmationService,

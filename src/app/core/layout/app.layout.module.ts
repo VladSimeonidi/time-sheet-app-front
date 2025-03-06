@@ -17,6 +17,8 @@ import { AppFooterComponent } from './components/footer/app.footer.component';
 import { AppConfigModule } from './config/config.module';
 import { AppSidebarComponent } from './components/sidebar/app.sidebar.component';
 import { AppLayoutComponent } from './app.layout.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     declarations: [
@@ -40,6 +42,9 @@ import { AppLayoutComponent } from './app.layout.component';
         RippleModule,
         RouterModule,
         AppConfigModule,
+        FormsModule,
+        DropdownModule,
+        TranslateModule.forChild(),
     ],
     exports: [AppLayoutComponent],
 })

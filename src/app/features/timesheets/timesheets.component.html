@@ -1,6 +1,6 @@
 <div class="grid">
     <div class="col-12">
-        <h1 class="text-primary">Time Sheets</h1>
+        <h1 class="text-primary">{{ "TIME_SHEETS" | translate }}</h1>
         <div class="card">
             <div class="card">
                 <app-employee-select
@@ -29,7 +29,7 @@
                             ></p-button>
                         </th>
                         <th *ngFor="let col of columns">
-                            {{ col.header }}
+                            {{ col.header | translate }}
                         </th>
                     </tr>
                 </ng-template>

@@ -10,6 +10,7 @@ import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { AppSplitButtonComponent } from '../app-split-button/app-split-button.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     declarations: [AppSplitButtonComponent],
@@ -25,6 +26,7 @@ import { AppSplitButtonComponent } from '../app-split-button/app-split-button.co
         ConfirmDialogModule,
         ToastModule,
         SplitButtonModule,
+        TranslateModule.forChild(),
     ],
     exports: [
         CommonModule,
@@ -34,6 +36,7 @@ import { AppSplitButtonComponent } from '../app-split-button/app-split-button.co
         InputTextModule,
         DynamicDialogModule,
         DropdownModule,
+        TranslateModule,
         ReactiveFormsModule,
         ConfirmDialogModule,
         ToastModule,

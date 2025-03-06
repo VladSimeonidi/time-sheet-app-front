@@ -15,12 +15,12 @@ import { Router } from '@angular/router';
 })
 export class EmployeesComponent extends BaseCrudTableComponent<Employee> {
     public columns = [
-        { field: 'firstname', header: 'First Name' },
-        { field: 'surname', header: 'Surname' },
-        { field: 'email', header: 'Email' },
-        { field: 'username', header: 'Username' },
-        { field: 'role', header: 'Role' },
-        { field: 'employment_status', header: 'Employment Status' },
+        { field: 'firstname', header: 'FIRST_NAME' },
+        { field: 'surname', header: 'SURNAME' },
+        { field: 'email', header: 'EMAIL' },
+        { field: 'username', header: 'USERNAME' },
+        { field: 'role', header: 'ROLE' },
+        { field: 'employment_status', header: 'EMPLOYMENT_STATUS' },
     ];
 
     constructor(

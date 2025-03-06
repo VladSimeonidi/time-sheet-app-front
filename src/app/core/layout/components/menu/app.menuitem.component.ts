@@ -28,7 +28,7 @@ import { LayoutService } from '../../service/app.layout.service';
                 *ngIf="root && item.visible !== false"
                 class="layout-menuitem-root-text"
             >
-                {{ item.label }}
+                {{ item.label | translate }}
             </div>
             <a
                 *ngIf="
@@ -74,7 +74,9 @@ import { LayoutService } from '../../service/app.layout.service';
                 pRipple
             >
                 <i [ngClass]="item.icon" class="layout-menuitem-icon"></i>
-                <span class="layout-menuitem-text">{{ item.label }}</span>
+                <span class="layout-menuitem-text"
+                    >{{ item.label | translate }}
+                </span>
                 <i
                     class="pi pi-fw pi-angle-down layout-submenu-toggler"
                     *ngIf="item.items"

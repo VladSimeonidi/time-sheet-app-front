@@ -24,17 +24,15 @@ export class EditEmployeeDialogComponent extends BaseEmployeeDialogComponent {
     }
 
     protected buildForm(): FormGroup {
-        return this.fb.group({
-            firstname: [this.data.firstname, Validators.required],
-            surname: [this.data.surname, Validators.required],
-            email: [this.data.email, [Validators.required, Validators.email]],
-            username: [this.data.username, Validators.required],
-            role: [this.data.role, Validators.required],
-            employment_status: [
-                this.data.employment_status,
-                Validators.required,
-            ],
-        });
+        return (this.form = this.fb.group(
+            this.fields.reduce((controls, field) => {
+                controls[field.name] = [
+                    this.data[field.name],
+                    field.validators,
+                ];
+                return controls;
+            }, {})
+        ));
     }
 
     protected saveData(employeeData: Partial<Employee>): void {

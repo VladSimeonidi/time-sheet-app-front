@@ -11,60 +11,6 @@ import { BaseEmployeeDialogComponent } from '../base-components/base-employee-di
     styleUrl: './create-employee-dialog.component.scss',
 })
 export class CreateEmployeeDialogComponent extends BaseEmployeeDialogComponent {
-    public fields = [
-        {
-            name: 'firstname',
-            label: 'First Name',
-            type: 'text',
-            validators: [Validators.required],
-            format: 'input',
-        },
-        {
-            name: 'surname',
-            label: 'Surname',
-            type: 'text',
-            validators: [Validators.required],
-            format: 'input',
-        },
-        {
-            name: 'email',
-            label: 'Email',
-            type: 'email',
-            validators: [Validators.required, Validators.email],
-            format: 'email',
-        },
-        {
-            name: 'username',
-            label: 'Username',
-            type: 'text',
-            validators: [Validators.required],
-            format: 'input',
-        },
-        {
-            name: 'role',
-            label: 'Role',
-            type: 'text',
-            validators: [Validators.required],
-            format: 'dropdown',
-            options: this.roles,
-        },
-        {
-            name: 'employment_status',
-            label: 'Employment Status',
-            type: 'text',
-            validators: [Validators.required],
-            format: 'dropdown',
-            options: this.employment_status,
-        },
-        {
-            name: 'weekly_hours',
-            label: 'Weekly hours',
-            type: 'number',
-            validators: [Validators.required],
-            format: 'input',
-        },
-    ];
-
     constructor(public ref: DynamicDialogRef, fb: FormBuilder) {
         super(fb);
     }

@@ -8,5 +8,6 @@ export interface Employee {
     employment_status: string;
     createdAt: Date;
     updatedAt: Date;
+    weekly_hours: number;
     __v: number;
 }

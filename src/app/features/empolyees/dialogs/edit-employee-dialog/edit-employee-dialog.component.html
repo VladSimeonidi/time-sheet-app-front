@@ -1,149 +1,80 @@
 <div class="p-fluid">
     <form [formGroup]="form">
         <div class="p-formgrid grid m-0">
-            <div class="field col-6">
-                <label for="firstname">First Name</label>
-                <input
-                    id="firstname"
-                    type="text"
-                    pInputText
-                    formControlName="firstname"
-                />
-                <div
-                    *ngIf="
-                        form.get('firstname').invalid &&
-                        (form.get('firstname').dirty ||
-                            form.get('firstname').touched)
-                    "
-                >
-                    <small
-                        class="p-error"
-                        *ngIf="form.get('firstname').errors?.required"
-                    >
-                        First Name is required.
-                    </small>
+            <div class="field col-6" *ngFor="let field of fields">
+                <label [for]="field.name">{{ field.label }}</label>
+
+                <div [ngSwitch]="field.format">
+                    <input
+                        *ngSwitchCase="'input'"
+                        [id]="field.name"
+                        [type]="field.type"
+                        pInputText
+                        [formControlName]="field.name"
+                        [class.ng-invalid]="form.get(field.name).invalid"
+                    />
+                    <input
+                        *ngSwitchCase="'email'"
+                        [id]="field.name"
+                        type="email"
+                        pInputText
+                        [formControlName]="field.name"
+                        [class.ng-invalid]="form.get(field.name).invalid"
+                    />
+
+                    <p-dropdown
+                        *ngSwitchCase="'dropdown'"
+                        [id]="field.name"
+                        [options]="field.options"
+                        [formControlName]="field.name"
+                        [class.ng-invalid]="form.get(field.name).invalid"
+                        [placeholder]="'Select ' + field.label"
+                        appendTo="body"
+                    ></p-dropdown>
+
+                    <p-checkbox
+                        *ngSwitchCase="'checkbox'"
+                        [id]="field.name"
+                        [formControlName]="field.name"
+                        [binary]="true"
+                        [class.ng-invalid]="form.get(field.name).invalid"
+                    ></p-checkbox>
+
+                    <p-calendar
+                        *ngSwitchCase="'calendar'"
+                        [id]="field.name"
+                        [formControlName]="field.name"
+                        [class.ng-invalid]="form.get(field.name).invalid"
+                    ></p-calendar>
                 </div>
-            </div>
-            <div class="field col-6">
-                <label for="surname">Last Name</label>
-                <input
-                    id="surname"
-                    type="text"
-                    pInputText
-                    formControlName="surname"
-                />
+
                 <div
                     *ngIf="
-                        form.get('surname').invalid &&
-                        (form.get('surname').dirty ||
-                            form.get('surname').touched)
+                        form.get(field.name).invalid &&
+                        (form.get(field.name).dirty ||
+                            form.get(field.name).touched)
                     "
                 >
-                    <small
-                        class="p-error"
-                        *ngIf="form.get('surname').errors?.required"
-                    >
-                        Last Name is required.
-                    </small>
-                </div>
-            </div>
-            <div class="field col-6">
-                <label for="email">Email</label>
-                <input
-                    id="email"
-                    type="text"
-                    pInputText
-                    formControlName="email"
-                />
-                <div
-                    *ngIf="
-                        form.get('email').invalid &&
-                        (form.get('email').dirty || form.get('email').touched)
-                    "
-                >
-                    <small
-                        class="p-error"
-                        *ngIf="form.get('email').errors?.required"
-                    >
-                        Email is required.
+                    <small class="p-error">
+                        {{ field.label }} is required.
                     </small>
                     <small
                         class="p-error"
-                        *ngIf="form.get('email').errors?.email"
+                        *ngIf="
+                            field.type === 'email' &&
+                            form.get(field.name).errors?.email
+                        "
                     >
                         Please enter a valid email address.
                     </small>
-                </div>
-            </div>
-            <div class="field col-6">
-                <label for="username">User Name</label>
-                <input
-                    id="username"
-                    type="text"
-                    pInputText
-                    formControlName="username"
-                />
-                <div
-                    *ngIf="
-                        form.get('username').invalid &&
-                        (form.get('username').dirty ||
-                            form.get('username').touched)
-                    "
-                >
                     <small
                         class="p-error"
-                        *ngIf="form.get('username').errors?.required"
+                        *ngIf="
+                            field.type === 'checkbox' &&
+                            form.get(field.name).errors?.requiredTrue
+                        "
                     >
-                        Username is required.
-                    </small>
-                </div>
-            </div>
-            <div class="field col-6">
-                <label for="role">Role</label>
-                <p-dropdown
-                    id="role"
-                    [options]="roles"
-                    formControlName="role"
-                    placeholder="Select a Role"
-                    appendTo="body"
-                >
-                </p-dropdown>
-                <div
-                    *ngIf="
-                        form.get('role').invalid &&
-                        (form.get('role').dirty || form.get('role').touched)
-                    "
-                >
-                    <small
-                        class="p-error"
-                        *ngIf="form.get('role').errors?.required"
-                    >
-                        Role selection is required.
-                    </small>
-                </div>
-            </div>
-            <div class="field col-6">
-                <label for="employment_status">Employment Status</label>
-                <p-dropdown
-                    id="employment_status"
-                    [options]="employment_status"
-                    formControlName="employment_status"
-                    placeholder="Select Employment Status"
-                    appendTo="body"
-                >
-                </p-dropdown>
-                <div
-                    *ngIf="
-                        form.get('employment_status').invalid &&
-                        (form.get('employment_status').dirty ||
-                            form.get('employment_status').touched)
-                    "
-                >
-                    <small
-                        class="p-error"
-                        *ngIf="form.get('employment_status').errors?.required"
-                    >
-                        Employment Status selection is required.
+                        You must accept the terms and conditions.
                     </small>
                 </div>
             </div>

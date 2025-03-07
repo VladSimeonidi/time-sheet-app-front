@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from 'src/app/interfaces/employee';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class EmployeeSelectApiService {
     private apiUrl = 'http://localhost:3000/api/employees';
 

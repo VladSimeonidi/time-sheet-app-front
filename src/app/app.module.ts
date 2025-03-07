@@ -10,6 +10,11 @@ import { MessageService } from 'primeng/api';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { EmployeeEffects } from './store/employee.effects';
+import { employeeReducer } from './store/employee.reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -22,6 +27,14 @@ export function HttpLoaderFactory(http: HttpClient) {
         AppLayoutModule,
         HttpClientModule,
         ToastModule,
+        StoreModule.forRoot({}, {}),
+        StoreModule.forFeature('employees', employeeReducer),
+        EffectsModule.forFeature([EmployeeEffects]),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25,
+            logOnly: false,
+        }),
+        EffectsModule.forRoot([EmployeeEffects]),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -29,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
                 deps: [HttpClient],
             },
         }),
+        EffectsModule.forRoot([]),
     ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },

@@ -1,4 +1,4 @@
-<ng-container *ngIf="employees.length > 0; else noEmployees">
+<ng-container *ngIf="employees$ | async as employees; else noEmployees">
     <p-dropdown
         [options]="employees"
         [(ngModel)]="selectedEmployee"

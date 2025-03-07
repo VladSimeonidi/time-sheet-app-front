@@ -56,6 +56,13 @@ export class CreateEmployeeDialogComponent extends BaseEmployeeDialogComponent {
             format: 'dropdown',
             options: this.employment_status,
         },
+        {
+            name: 'weekly_hours',
+            label: 'Weekly hours',
+            type: 'number',
+            validators: [Validators.required],
+            format: 'input',
+        },
     ];
 
     constructor(public ref: DynamicDialogRef, fb: FormBuilder) {

@@ -5,6 +5,8 @@ import { BaseDialogComponent } from 'src/app/shared/base-table/base-components/b
 
 @Directive()
 export abstract class BaseEmployeeDialogComponent extends BaseDialogComponent<Employee> {
+    readonly WEEKLY_HOURS = 40;
+
     public roles = [
         { label: 'Manager', value: 'manager' },
         { label: 'Admin', value: 'admin' },
@@ -24,6 +26,7 @@ export abstract class BaseEmployeeDialogComponent extends BaseDialogComponent<Em
             type: 'text',
             validators: [Validators.required],
             format: 'input',
+            prepopulate: '',
         },
         {
             name: 'surname',
@@ -31,6 +34,7 @@ export abstract class BaseEmployeeDialogComponent extends BaseDialogComponent<Em
             type: 'text',
             validators: [Validators.required],
             format: 'input',
+            prepopulate: '',
         },
         {
             name: 'email',
@@ -38,6 +42,7 @@ export abstract class BaseEmployeeDialogComponent extends BaseDialogComponent<Em
             type: 'email',
             validators: [Validators.required, Validators.email],
             format: 'email',
+            prepopulate: '',
         },
         {
             name: 'username',
@@ -45,6 +50,7 @@ export abstract class BaseEmployeeDialogComponent extends BaseDialogComponent<Em
             type: 'text',
             validators: [Validators.required],
             format: 'input',
+            prepopulate: '',
         },
         {
             name: 'role',
@@ -53,6 +59,7 @@ export abstract class BaseEmployeeDialogComponent extends BaseDialogComponent<Em
             validators: [Validators.required],
             format: 'dropdown',
             options: this.roles,
+            prepopulate: this.roles[0].value,
         },
         {
             name: 'employment_status',
@@ -61,6 +68,7 @@ export abstract class BaseEmployeeDialogComponent extends BaseDialogComponent<Em
             validators: [Validators.required],
             format: 'dropdown',
             options: this.employment_status,
+            prepopulate: this.employment_status[0].value,
         },
         {
             name: 'weekly_hours',
@@ -68,6 +76,7 @@ export abstract class BaseEmployeeDialogComponent extends BaseDialogComponent<Em
             type: 'number',
             validators: [Validators.required],
             format: 'input',
+            prepopulate: this.WEEKLY_HOURS,
         },
     ];
 

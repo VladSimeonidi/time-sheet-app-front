@@ -7,7 +7,7 @@ import { BaseEmployeeDialogComponent } from '../base-components/base-employee-di
 
 @Component({
     selector: 'app-create-employee-dialog',
-    templateUrl: './create-employee-dialog.component.html',
+    templateUrl: '../shared/shared-employee-dialog.component.html',
     styleUrl: './create-employee-dialog.component.scss',
 })
 export class CreateEmployeeDialogComponent extends BaseEmployeeDialogComponent {
@@ -20,7 +20,7 @@ export class CreateEmployeeDialogComponent extends BaseEmployeeDialogComponent {
     protected buildForm(): FormGroup {
         return (this.form = this.fb.group(
             this.fields.reduce((controls, field) => {
-                controls[field.name] = ['', field.validators];
+                controls[field.name] = [field.prepopulate, field.validators];
                 return controls;
             }, {})
         ));

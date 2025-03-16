@@ -7,7 +7,7 @@ import { BaseEmployeeDialogComponent } from '../base-components/base-employee-di
 
 @Component({
     selector: 'app-edit-employee-dialog',
-    templateUrl: './edit-employee-dialog.component.html',
+    templateUrl: '../shared/shared-employee-dialog.component.html',
     styleUrl: './edit-employee-dialog.component.scss',
 })
 export class EditEmployeeDialogComponent extends BaseEmployeeDialogComponent {

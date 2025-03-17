@@ -78,7 +78,10 @@ export abstract class BaseCrudTableComponent<T>
                 filter(this.isDialogDataValid),
                 switchMap((data) => this.handleDialogClose(data, item?._id))
             )
-            .subscribe({});
+            .subscribe({
+                error: (err) =>
+                    console.error('Error handling dialog close:', err),
+            });
     }
 
     private isDialogDataValid(data: any): boolean {

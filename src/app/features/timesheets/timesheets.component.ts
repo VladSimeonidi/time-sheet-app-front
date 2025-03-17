@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { TimeSheet } from 'src/app/interfaces/timesheet';
-import { BaseTableComponent } from 'src/app/shared/base-table/base-components/base-table.component';
 import { TimeSheetsConfirmationService } from './services/timesheets-confirmation.service';
 import { TimeSheetPaginationService } from './services/timesheets-pagination.service';
 import { TimeSheetsNotificationService } from './services/timesheets-notification.service';

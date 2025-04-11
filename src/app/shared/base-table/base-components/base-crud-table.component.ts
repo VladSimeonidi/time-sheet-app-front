@@ -13,6 +13,7 @@ import {
     tap,
     catchError,
     EMPTY,
+    firstValueFrom,
 } from 'rxjs';
 import { DialogAction } from 'src/app/enums/dialog-action.enum';
 
@@ -48,25 +49,8 @@ export abstract class BaseCrudTableComponent<T>
         }
 
         if (action === DialogAction.DELETE) {
-            if (data._id) {
-                this.promptDeleteItem(data._id);
-            } else {
-                console.error('Missing _id in data for delete action.');
-            }
+            this.handleDeleteItem(data._id);
         }
-    }
-
-    public promptDeleteItem(id: string): void {
-        this.confirmationService
-            .confirmAction()
-            .pipe(takeUntil(this.destroy$))
-            .subscribe((result) => {
-                if (result) {
-                    this.deleteItem(id);
-                } else {
-                    this.notificationService.showWarning('You have rejected');
-                }
-            });
     }
 
     public openDialog(action: DialogAction, item?: any): void {
@@ -82,6 +66,18 @@ export abstract class BaseCrudTableComponent<T>
                 error: (err) =>
                     console.error('Error handling dialog close:', err),
             });
+    }
+
+    private async handleDeleteItem(id: string): Promise<void> {
+        if (!id) return this.handleError('Something went wrong', null);
+
+        const response: boolean = await this.getDeleteConfirmation();
+
+        if (response) this.deleteItem(id);
+    }
+
+    private getDeleteConfirmation(): Promise<boolean> {
+        return firstValueFrom(this.confirmationService.confirmAction());
     }
 
     private isDialogDataValid(data: any): boolean {
